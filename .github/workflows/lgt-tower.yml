@@ -1,5 +1,7 @@
 name: LGT-TOWER-01
 on:
+  schedule:
+    - cron: "*/10 * * * *"  # cfts-added for self-bootstrap
   push:
     paths: ['inbox/**', 'ci/lgt_tower.py', '.github/workflows/lgt-tower.yml']
   issues:
