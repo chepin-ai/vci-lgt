@@ -1,0 +1,26 @@
+name: lgt-tower
+on:
+  push:
+    branches: [main]
+  repository_dispatch:
+    types: [lgt-wake, federation-event]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  patrol:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: lgt patrol
+        run: |
+          echo "lgt tower patrol starting"
+          date -u +"%Y%m%dT%H%M%SZ" > receipts/tower/QT-$(date -u +"%Y%m%dT%H%M%SZ").json
+          git config user.name "lgt-tower"
+          git config user.email "lgt@chepin.ai"
+          git add receipts/
+          git commit -m "lgt receipt $(date -u +"%Y%m%dT%H%M%SZ")" || true
+          git push || true
