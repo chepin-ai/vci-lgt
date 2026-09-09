@@ -1,0 +1,12 @@
+{
+  "v": "LGT-TOWER-01",
+  "ts": "2026-09-09T17:12:55Z",
+  "events": [
+    {
+      "kind": "inbox",
+      "ref": "00chase-自治令回执-lgt-lvlu-20260910T004600Z.md"
+    }
+  ],
+  "verdict": "patrol-ok",
+  "repo": "chepin-ai/vci-lgt"
+}
