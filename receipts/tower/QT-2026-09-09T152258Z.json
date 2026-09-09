@@ -1,0 +1,12 @@
+{
+  "v": "LGT-TOWER-01",
+  "ts": "2026-09-09T15:22:58Z",
+  "events": [
+    {
+      "kind": "inbox",
+      "ref": "zzring2-lvlu-lgt-信标R2L01-致vinf并转qgl.md"
+    }
+  ],
+  "verdict": "patrol-ok",
+  "repo": "chepin-ai/vci-lgt"
+}
