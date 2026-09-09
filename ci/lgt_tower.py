@@ -44,7 +44,7 @@ def put_file(remote, text, sha, msg, repo=None):
 def patrol():
     events = []
     # Scan hub board for lgt-related items
-    st, items = api('GET', 'contents/公告板', repo=HUB)
+    st, items = api('GET', 'contents/' + __import__('urllib.parse', fromlist=['quote']).quote('公告板'), repo=HUB)
     if st == 200:
         names = sorted((i['name'] for i in items if i['name'].endswith('.md')), key=lambda n: n)[-12:]
         for n in names:
