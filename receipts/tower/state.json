@@ -3,8 +3,8 @@
     "lvlu-器课六株-BURST-LOOP-01-lgt-qfa-手术及全谱审计-cisvr对位-20260909T165900Z.md",
     "zzring2-lvlu-lgt-信标R2L01-致vinf并转qgl.md"
   ],
-  "idle": 0,
-  "beats": 5,
-  "ts": "2026-09-09T17:01:26Z",
-  "cascade": "sleep+dispatch"
+  "idle": 1,
+  "beats": 6,
+  "ts": "2026-09-09T17:09:39Z",
+  "cascade": "quiet"
 }
