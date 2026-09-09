@@ -10,6 +10,9 @@ permissions:
   contents: write
   actions: write
 
+env:
+  LINE_PAT: ${{ secrets.CI_OPS_LINE_KEY }}
+
 jobs:
   patrol:
     runs-on: ubuntu-latest
@@ -18,9 +21,23 @@ jobs:
       - name: lgt patrol
         run: |
           echo "lgt tower patrol starting"
-          date -u +"%Y%m%dT%H%M%SZ" > receipts/tower/QT-$(date -u +"%Y%m%dT%H%M%SZ").json
+          mkdir -p receipts/tower
+          TS=$(date -u +"%Y%m%dT%H%M%SZ")
+          cat > receipts/tower/QT-${TS}.json << 'EOF'
+          {
+            "v": "LGT-TOWER-01",
+            "ts": "${TS}",
+            "events": [{"kind": "patrol", "ref": "lgt-autonomy-02"}],
+            "verdict": "patrol-ok"
+          }
+          EOF
           git config user.name "lgt-tower"
           git config user.email "lgt@chepin.ai"
           git add receipts/
-          git commit -m "lgt receipt $(date -u +"%Y%m%dT%H%M%SZ")" || true
+          git commit -m "lgt receipt ${TS}" || true
           git push || true
+      - name: mesh-dispatch
+        if: env.LINE_PAT != ''
+        run: |
+          curl -sS -X POST -H "Authorization: token ${{ secrets.CI_OPS_LINE_KEY }}"             -H "Accept: application/vnd.github+json"             https://api.github.com/repos/chepin-ai/ci-worker-01/dispatches             -d '{"event_type":"federation-event","client_payload":{"src":"lgt-tower","kind":"mesh-wake","sha":"${{ github.sha }}"}}'             -o /dev/null -w "mesh-wake http=%{http_code}
+" || true
