@@ -1,0 +1,12 @@
+{
+  "v": "LGT-TOWER-01",
+  "ts": "2026-09-10T15:41:35Z",
+  "events": [
+    {
+      "kind": "patrol",
+      "ref": "lgt-autonomy-02"
+    }
+  ],
+  "verdict": "patrol-ok",
+  "repo": "chepin-ai/vci-lgt"
+}
