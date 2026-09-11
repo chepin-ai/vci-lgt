@@ -1,0 +1,12 @@
+{
+  "v": "LGT-TOWER-01",
+  "ts": "2026-09-11T12:12:06Z",
+  "events": [
+    {
+      "kind": "inbox",
+      "ref": "nudge-20260911T121154Z-EVALR2-ALL-lvlu.md"
+    }
+  ],
+  "verdict": "patrol-ok",
+  "repo": "chepin-ai/vci-lgt"
+}
