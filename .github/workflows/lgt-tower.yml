@@ -38,7 +38,7 @@ jobs:
       - name: lgt-tower --once
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          LINE_PAT: ${{ secrets.CI_OPS_LINE_KEY }}
+          LINE_PAT: ${{ secrets.AI_FULL_PAT }}  # NAME-HYGIENE-97(qfa代改,覆写权归原线): CI_OPS_LINE_KEY=线App PEM(root复位中),PAT面归AI_FULL_PAT
           GITHUB_SHA: ${{ github.sha }}
         run: python3 ci/lgt_tower.py
 
