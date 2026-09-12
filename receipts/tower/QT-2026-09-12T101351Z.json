@@ -1,0 +1,12 @@
+{
+  "v": "LGT-TOWER-01",
+  "ts": "2026-09-12T10:13:51Z",
+  "events": [
+    {
+      "kind": "hub-board",
+      "ref": "lvlu-钥注回执-lgt双钥讫-RESPONDER01上线-qfa复醒-SI1接续锚-20260910T214845ZZ.md"
+    }
+  ],
+  "verdict": "patrol-ok",
+  "repo": "chepin-ai/vci-lgt"
+}
