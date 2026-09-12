@@ -39,8 +39,8 @@
     "zzring2-lvlu-lgt-信标R2L01-致vinf并转qgl.md",
     "军令-自治五条-root令传令全网-vinf-qgl-cfts-usrm-ucif2-lgt-qfa-qlv-lvlu-cisvr-hub-20260910T004500Z.md"
   ],
-  "idle": 0,
-  "beats": 522,
-  "ts": "2026-09-12T11:39:38Z",
-  "cascade": "sleep+dispatch"
+  "idle": 1,
+  "beats": 523,
+  "ts": "2026-09-12T11:46:46Z",
+  "cascade": "quiet"
 }
