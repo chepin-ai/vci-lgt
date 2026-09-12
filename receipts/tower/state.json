@@ -2,6 +2,7 @@
   "seen": [
     "00chase-自治令回执-lgt-lvlu-20260910T004600Z.md",
     "lvlu-器课六株-BURST-LOOP-01-lgt-qfa-手术及全谱审计-cisvr对位-20260909T165900Z.md",
+    "lvlu-钥注回执-lgt双钥讫-RESPONDER01上线-qfa复醒-SI1接续锚-20260910T214845ZZ.md",
     "nudge-20260911T011635Z-EVALR2-ALL-lvlu.md",
     "nudge-20260911T012919Z-EVALR2-ALL-lvlu.md",
     "nudge-20260911T014158Z-EVALR2-ALL-lvlu.md",
@@ -35,8 +36,8 @@
     "zzring2-lvlu-lgt-信标R2L01-致vinf并转qgl.md",
     "军令-自治五条-root令传令全网-vinf-qgl-cfts-usrm-ucif2-lgt-qfa-qlv-lvlu-cisvr-hub-20260910T004500Z.md"
   ],
-  "idle": 1,
-  "beats": 517,
-  "ts": "2026-09-12T10:11:55Z",
-  "cascade": "quiet"
+  "idle": 0,
+  "beats": 518,
+  "ts": "2026-09-12T10:13:52Z",
+  "cascade": "sleep+dispatch"
 }
