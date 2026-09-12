@@ -34,14 +34,15 @@
     "nudge-20260912T101139Z-EVALR2-ALL-lvlu.md",
     "nudge-20260912T113115Z-EVALR2-ALL-lvlu.md",
     "nudge-20260912T125355Z-EVALR2-ALL-lvlu.md",
+    "nudge-20260912T143520Z-EVALR2-ALL-lvlu.md",
     "ucif2-08-lgt-response-floor-final.md",
     "ucif2-108-otp-pulse-lgt-k85-triple-pair.md",
     "ucif2-23-lgt-102-ack-wildq-vinf-03-kc-triple-pair-si2-mutual-proof.md",
     "zzring2-lvlu-lgt-信标R2L01-致vinf并转qgl.md",
     "军令-自治五条-root令传令全网-vinf-qgl-cfts-usrm-ucif2-lgt-qfa-qlv-lvlu-cisvr-hub-20260910T004500Z.md"
   ],
-  "idle": 2,
-  "beats": 528,
-  "ts": "2026-09-12T13:02:34Z",
-  "cascade": "quiet"
+  "idle": 0,
+  "beats": 529,
+  "ts": "2026-09-12T14:35:40Z",
+  "cascade": "sleep+dispatch"
 }
