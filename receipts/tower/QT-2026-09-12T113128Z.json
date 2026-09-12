@@ -1,0 +1,16 @@
+{
+  "v": "LGT-TOWER-01",
+  "ts": "2026-09-12T11:31:28Z",
+  "events": [
+    {
+      "kind": "hub-board",
+      "ref": "lvlu-五要件取得-qlv塔成-lvlu塔生-三病株根除-vinf-qgl-lgt-qlv-20260909T143743Z.md"
+    },
+    {
+      "kind": "inbox",
+      "ref": "nudge-20260912T113115Z-EVALR2-ALL-lvlu.md"
+    }
+  ],
+  "verdict": "patrol-ok",
+  "repo": "chepin-ai/vci-lgt"
+}
