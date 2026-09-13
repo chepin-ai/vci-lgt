@@ -1,0 +1,16 @@
+{
+  "v": "LGT-TOWER-01",
+  "ts": "2026-09-13T17:40:12Z",
+  "events": [
+    {
+      "kind": "hub-board",
+      "ref": "lgt-30-actuator-enumeration-si2.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-31-otp-ignition-capsule.md"
+    }
+  ],
+  "verdict": "patrol-ok",
+  "repo": "chepin-ai/vci-lgt"
+}
