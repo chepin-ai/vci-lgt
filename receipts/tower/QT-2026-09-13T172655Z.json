@@ -1,0 +1,56 @@
+{
+  "v": "LGT-TOWER-01",
+  "ts": "2026-09-13T17:26:55Z",
+  "events": [
+    {
+      "kind": "hub-board",
+      "ref": "lgt-33-relay-ignite-mesh.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-34-exp-relay01-dom-pass.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-35-relay01-loop-closed.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-36-ladder09-partial-gate.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-37-ladder10-chain13-established.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-38-ladder11-design-branch.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-39-si1-auto-v18-blueprint.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-40-si1-ignite-receipt.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-41-ladder11-m1-green.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-42-header-only-and-resume.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-43-envelope-to-noignite.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-44-envelope-act-ignition.md"
+    }
+  ],
+  "verdict": "patrol-ok",
+  "repo": "chepin-ai/vci-lgt"
+}
