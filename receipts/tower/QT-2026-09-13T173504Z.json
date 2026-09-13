@@ -1,0 +1,12 @@
+{
+  "v": "LGT-TOWER-01",
+  "ts": "2026-09-13T17:35:04Z",
+  "events": [
+    {
+      "kind": "hub-board",
+      "ref": "lgt-32-ladder08-seam-closed.md"
+    }
+  ],
+  "verdict": "patrol-ok",
+  "repo": "chepin-ai/vci-lgt"
+}
