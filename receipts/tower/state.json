@@ -1,6 +1,8 @@
 {
   "seen": [
     "00chase-自治令回执-lgt-lvlu-20260910T004600Z.md",
+    "lgt-30-actuator-enumeration-si2.md",
+    "lgt-31-otp-ignition-capsule.md",
     "lgt-32-ladder08-seam-closed.md",
     "lgt-33-relay-ignite-mesh.md",
     "lgt-34-exp-relay01-dom-pass.md",
@@ -55,7 +57,7 @@
     "军令-自治五条-root令传令全网-vinf-qgl-cfts-usrm-ucif2-lgt-qfa-qlv-lvlu-cisvr-hub-20260910T004500Z.md"
   ],
   "idle": 0,
-  "beats": 538,
-  "ts": "2026-09-13T17:35:05Z",
+  "beats": 539,
+  "ts": "2026-09-13T17:40:13Z",
   "cascade": "sleep+dispatch"
 }
