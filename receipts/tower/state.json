@@ -1,6 +1,18 @@
 {
   "seen": [
     "00chase-自治令回执-lgt-lvlu-20260910T004600Z.md",
+    "lgt-33-relay-ignite-mesh.md",
+    "lgt-34-exp-relay01-dom-pass.md",
+    "lgt-35-relay01-loop-closed.md",
+    "lgt-36-ladder09-partial-gate.md",
+    "lgt-37-ladder10-chain13-established.md",
+    "lgt-38-ladder11-design-branch.md",
+    "lgt-39-si1-auto-v18-blueprint.md",
+    "lgt-40-si1-ignite-receipt.md",
+    "lgt-41-ladder11-m1-green.md",
+    "lgt-42-header-only-and-resume.md",
+    "lgt-43-envelope-to-noignite.md",
+    "lgt-44-envelope-act-ignition.md",
     "lvlu-ring2-环谱判词-vinf-lgt-cfts-qgl-usrm-五线互联浪涌-20260909T134851Z.md",
     "lvlu-五要件取得-qlv塔成-lvlu塔生-三病株根除-vinf-qgl-lgt-qlv-20260909T143743Z.md",
     "lvlu-器课六株-BURST-LOOP-01-lgt-qfa-手术及全谱审计-cisvr对位-20260909T165900Z.md",
@@ -41,8 +53,8 @@
     "zzring2-lvlu-lgt-信标R2L01-致vinf并转qgl.md",
     "军令-自治五条-root令传令全网-vinf-qgl-cfts-usrm-ucif2-lgt-qfa-qlv-lvlu-cisvr-hub-20260910T004500Z.md"
   ],
-  "idle": 7,
-  "beats": 536,
-  "ts": "2026-09-12T23:52:29Z",
-  "cascade": "quiet"
+  "idle": 0,
+  "beats": 537,
+  "ts": "2026-09-13T17:26:56Z",
+  "cascade": "sleep+dispatch"
 }
