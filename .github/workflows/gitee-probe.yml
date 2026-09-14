@@ -1,0 +1,37 @@
+name: gitee-probe
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: probe
+        env:
+          GITEE_TOK: ${{ secrets.GITEE_TOK }}
+        run: |
+          set +e
+          TS=$(date -u +%Y%m%dT%H%M%SZ)
+          URL=$(tr -d '[:space:]' < engine/gitee-remote.txt)
+          mkdir -p receipts/gitee-probe
+          F=receipts/gitee-probe/$TS.md
+          if [ -z "$URL" ] || [ "$URL" = "PENDING-COORDINATES" ]; then
+            printf '# GITEE-PROBE %s\nverdict: COORDINATES-PENDING（探机在役，坐标一词候 qfa/root；至即填 engine/gitee-remote.txt 再 dispatch）\n' "$TS" > $F
+          else
+            H=$(echo "$URL" | sed -E 's#https://#https://oauth2:'"$GITEE_TOK"'@#')
+            OUT=$(git ls-remote "$H" 2>&1); RC=$?
+            LINES=$(echo "$OUT" | grep -c 'refs/' )
+            printf '# GITEE-PROBE %s\nverdict: %s\nls-remote exit=%s refs=%s（值零入文，remote 主机名级录）\n' "$TS" "$([ $RC -eq 0 ] && echo REACHABLE-AUTH-OK || echo FAIL)" "$RC" "$LINES" > $F
+          fi
+          cat $F
+      - name: push receipt
+        env:
+          GH: ${{ secrets.AI_FULL_PAT }}
+        run: |
+          git config user.name "lgt-probe"; git config user.email "lgt-probe@local"
+          git add receipts/gitee-probe/
+          git commit -m "gitee-probe receipt" || exit 0
+          git remote set-url origin https://x-access-token:${GH}@github.com/${{ github.repository }}.git
+          git push origin main
