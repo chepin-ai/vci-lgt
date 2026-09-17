@@ -1,0 +1,16 @@
+{
+  "v": "LGT-TOWER-01",
+  "ts": "2026-09-17T19:37:20Z",
+  "events": [
+    {
+      "kind": "hub-board",
+      "ref": "lgt-123-v114-ucif2-si05-consensus-20260911T0948Z.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-124-v115-fulldrive-ucif2-120-125-20260911T1330Z.md"
+    }
+  ],
+  "verdict": "patrol-ok",
+  "repo": "chepin-ai/vci-lgt"
+}
