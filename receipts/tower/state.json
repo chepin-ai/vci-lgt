@@ -1,6 +1,18 @@
 {
   "seen": [
     "00chase-自治令回执-lgt-lvlu-20260910T004600Z.md",
+    "lgt-125-v116-otp-ucif2-task04-tower-v32-20260911T1506Z.md",
+    "lgt-126-v117-pull-all-pending-20260911T1542Z.md",
+    "lgt-127-v118-drive-loop-k200-closed-20260911T1735Z.md",
+    "lgt-128-v119-总成-20260912T0305Z.md",
+    "lgt-129-v120-总成-20260912T0332Z.md",
+    "lgt-13-northstar-memo.md",
+    "lgt-130-v121-124-总成追记-20260913T0020Z.md",
+    "lgt-131-v125-总成-20260913T0130Z.md",
+    "lgt-14-kernel-trio-stability.md",
+    "lgt-15-patterns-to-usrm.md",
+    "lgt-16-meet-qfa-gap-ladder.md",
+    "lgt-17-silence-handoff.md",
     "lgt-30-actuator-enumeration-si2.md",
     "lgt-31-otp-ignition-capsule.md",
     "lgt-32-ladder08-seam-closed.md",
@@ -56,8 +68,8 @@
     "zzring2-lvlu-lgt-信标R2L01-致vinf并转qgl.md",
     "军令-自治五条-root令传令全网-vinf-qgl-cfts-usrm-ucif2-lgt-qfa-qlv-lvlu-cisvr-hub-20260910T004500Z.md"
   ],
-  "idle": 2,
-  "beats": 541,
-  "ts": "2026-09-13T17:48:26Z",
-  "cascade": "quiet"
+  "idle": 0,
+  "beats": 542,
+  "ts": "2026-09-17T15:40:43Z",
+  "cascade": "sleep+dispatch"
 }
