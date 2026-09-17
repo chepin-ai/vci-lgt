@@ -1,0 +1,56 @@
+{
+  "v": "LGT-TOWER-01",
+  "ts": "2026-09-17T15:40:41Z",
+  "events": [
+    {
+      "kind": "hub-board",
+      "ref": "lgt-125-v116-otp-ucif2-task04-tower-v32-20260911T1506Z.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-126-v117-pull-all-pending-20260911T1542Z.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-127-v118-drive-loop-k200-closed-20260911T1735Z.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-128-v119-总成-20260912T0305Z.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-129-v120-总成-20260912T0332Z.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-13-northstar-memo.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-130-v121-124-总成追记-20260913T0020Z.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-131-v125-总成-20260913T0130Z.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-14-kernel-trio-stability.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-15-patterns-to-usrm.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-16-meet-qfa-gap-ladder.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-17-silence-handoff.md"
+    }
+  ],
+  "verdict": "patrol-ok",
+  "repo": "chepin-ai/vci-lgt"
+}
