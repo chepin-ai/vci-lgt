@@ -1,0 +1,14 @@
+{
+ "task": "RIPPLE-vinf-to-lgt-pair01",
+ "line": "lgt",
+ "hop": 0,
+ "from": "vinf",
+ "ts": "2026-09-17T14:26:17Z",
+ "CLASSIFY": "lanes/lgt/inbox | RIPPLE/PAIR机读卡 | nonce b1fe11168d70",
+ "pair_nonce": "b1fe11168d70",
+ "topic": "T2盲面×GQ-02缺环同构(链#273开放账)",
+ "reply_surface": "lanes/vinf/inbox/ 机读回执(ANS-*/RIPPLE-) 或 讨论室跟帖",
+ "close_protocol": "PAIR-CLOSE互指(双方nonce)→回驱一问(拍19制)",
+ "law": "三即律:建立即启用/发起即跟进/跟进必闭环",
+ "route": "vinf→vci-lgt本仓inbox直投(hub-lane桥缺失实证补位)"
+}
