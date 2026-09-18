@@ -1,0 +1,41 @@
+name: GITEE-MIRROR-03 (Gitee架子·拍41·公仓vci-vinf试点·名级用钥)
+'on':
+  workflow_dispatch:
+  schedule: []
+permissions:
+  contents: read
+env:
+  GITEE_TOK: ${{ secrets.GITEE_TOK }}
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: mirror-vci-vinf
+        run: |
+          python3 - <<'PYEOF'
+          import os, json, urllib.request, subprocess
+          TOK=os.environ.get('GITEE_TOK','')
+          def api(method,url,data=None,tok=TOK):
+              sep='&' if '?' in url else '?'
+              rq=urllib.request.Request(url+sep+'access_token='+tok,data=data,headers={'Content-Type':'application/json'},method=method)
+              try:
+                  with urllib.request.urlopen(rq,timeout=30) as r: return r.status, json.loads(r.read() or b'{}')
+              except urllib.error.HTTPError as e: return e.code, {}
+          stu,ju=api('GET','https://gitee.com/api/v5/user')
+          user=ju.get('login','') if stu==200 else ''
+          repo='vci-vinf'
+          st,_=api('GET','https://gitee.com/api/v5/repos/%s/%s'%(user,repo))
+          created='exists(%s)'%st
+          if st==404 and user:
+              body=json.dumps({'name':repo,'private':True,'auto_init':False}).encode()
+              st2,_=api('POST','https://gitee.com/api/v5/user/repos',body)
+              created='created(%s)'%st2
+          q1=subprocess.run(['git','clone','--mirror','https://github.com/chepin-ai/vci-vinf.git','src.git'],capture_output=True,text=True)
+          ok=False; err=''
+          if q1.returncode==0 and user:
+              q2=subprocess.run(['git','--git-dir','src.git','push','--mirror','https://%s:%s@gitee.com/%s/%s.git'%(user,TOK,user,repo)],capture_output=True,text=True)
+              ok=q2.returncode==0; err=q2.stderr[-140:]
+          else: err=q1.stderr[-140:]
+          if TOK: err=err.replace(TOK,'***')
+          print(json.dumps({'gitee_mirror':'done','gitee_user':user,'repo':'%s/%s'%(user,repo),'repo_state':created,'push':'ok' if ok else 'fail','err':err},ensure_ascii=False))
+          PYEOF
