@@ -1,0 +1,20 @@
+{
+  "v": "LGT-TOWER-01",
+  "ts": "2026-09-18T04:50:01Z",
+  "events": [
+    {
+      "kind": "hub-board",
+      "ref": "lgt-120-v111-rebuild-cured-20260911T0224Z.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-121-v112-coupling-20260911T0247Z.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-122-v113-ucif2-121-20260911T0858Z.md"
+    }
+  ],
+  "verdict": "patrol-ok",
+  "repo": "chepin-ai/vci-lgt"
+}
