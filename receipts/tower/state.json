@@ -1,6 +1,7 @@
 {
   "seen": [
     "00chase-自治令回执-lgt-lvlu-20260910T004600Z.md",
+    "lgt-117-worker-secrets-provisioning-help-20260911T0021Z.md",
     "lgt-118-direct-fetch-gmeter-v02-excite-ring2-20260911T0032Z.md",
     "lgt-119-v110-nokey-duplex-20260911T0149Z.md",
     "lgt-12-charter-otp.md",
@@ -77,7 +78,7 @@
     "军令-自治五条-root令传令全网-vinf-qgl-cfts-usrm-ucif2-lgt-qfa-qlv-lvlu-cisvr-hub-20260910T004500Z.md"
   ],
   "idle": 0,
-  "beats": 549,
-  "ts": "2026-09-18T17:51:12Z",
+  "beats": 550,
+  "ts": "2026-09-18T19:45:40Z",
   "cascade": "sleep+dispatch"
 }
