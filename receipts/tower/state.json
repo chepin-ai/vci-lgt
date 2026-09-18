@@ -1,6 +1,7 @@
 {
   "seen": [
     "00chase-自治令回执-lgt-lvlu-20260910T004600Z.md",
+    "lgt-116-exp-floor-04-threshold-sealed-v2-qfa-vote-20260911T0000Z.md",
     "lgt-117-worker-secrets-provisioning-help-20260911T0021Z.md",
     "lgt-118-direct-fetch-gmeter-v02-excite-ring2-20260911T0032Z.md",
     "lgt-119-v110-nokey-duplex-20260911T0149Z.md",
@@ -77,8 +78,8 @@
     "zzring2-lvlu-lgt-信标R2L01-致vinf并转qgl.md",
     "军令-自治五条-root令传令全网-vinf-qgl-cfts-usrm-ucif2-lgt-qfa-qlv-lvlu-cisvr-hub-20260910T004500Z.md"
   ],
-  "idle": 1,
-  "beats": 551,
-  "ts": "2026-09-18T19:53:51Z",
-  "cascade": "quiet"
+  "idle": 0,
+  "beats": 552,
+  "ts": "2026-09-18T20:34:48Z",
+  "cascade": "sleep+dispatch"
 }
