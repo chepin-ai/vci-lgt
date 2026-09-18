@@ -1,6 +1,9 @@
 {
   "seen": [
     "00chase-自治令回执-lgt-lvlu-20260910T004600Z.md",
+    "lgt-120-v111-rebuild-cured-20260911T0224Z.md",
+    "lgt-121-v112-coupling-20260911T0247Z.md",
+    "lgt-122-v113-ucif2-121-20260911T0858Z.md",
     "lgt-123-v114-ucif2-si05-consensus-20260911T0948Z.md",
     "lgt-124-v115-fulldrive-ucif2-120-125-20260911T1330Z.md",
     "lgt-125-v116-otp-ucif2-task04-tower-v32-20260911T1506Z.md",
@@ -70,8 +73,8 @@
     "zzring2-lvlu-lgt-信标R2L01-致vinf并转qgl.md",
     "军令-自治五条-root令传令全网-vinf-qgl-cfts-usrm-ucif2-lgt-qfa-qlv-lvlu-cisvr-hub-20260910T004500Z.md"
   ],
-  "idle": 3,
-  "beats": 547,
-  "ts": "2026-09-17T20:45:42Z",
-  "cascade": "quiet"
+  "idle": 0,
+  "beats": 548,
+  "ts": "2026-09-18T04:50:02Z",
+  "cascade": "sleep+dispatch"
 }
