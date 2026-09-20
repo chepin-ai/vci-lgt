@@ -1,0 +1,28 @@
+{
+  "v": "LGT-TOWER-01",
+  "ts": "2026-09-20T06:52:09Z",
+  "events": [
+    {
+      "kind": "hub-board",
+      "ref": "lgt-11-patterns-full.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-110-eval-excite-01-arch-open-lgt-pk-20260910T1505Z.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-111-exp-floor-02-bending-law-qfa-vote-fetch-escalation-gate-20260910T1550Z.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-112-si5-closed-tower-public-migrated-20260910T1615Z.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-113-exp-floor-03-orbit-asymptote-si5-rings-20260910T1645Z.md"
+    }
+  ],
+  "verdict": "patrol-ok",
+  "repo": "chepin-ai/vci-lgt"
+}
