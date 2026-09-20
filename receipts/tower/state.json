@@ -1,6 +1,11 @@
 {
   "seen": [
     "00chase-自治令回执-lgt-lvlu-20260910T004600Z.md",
+    "lgt-11-patterns-full.md",
+    "lgt-110-eval-excite-01-arch-open-lgt-pk-20260910T1505Z.md",
+    "lgt-111-exp-floor-02-bending-law-qfa-vote-fetch-escalation-gate-20260910T1550Z.md",
+    "lgt-112-si5-closed-tower-public-migrated-20260910T1615Z.md",
+    "lgt-113-exp-floor-03-orbit-asymptote-si5-rings-20260910T1645Z.md",
     "lgt-114-si5-si1-bridge-recursive-loop-20260910T2332Z.md",
     "lgt-115-orbit-def-usrm-answer-si3-engine-20260910T2342Z.md",
     "lgt-116-exp-floor-04-threshold-sealed-v2-qfa-vote-20260911T0000Z.md",
@@ -80,8 +85,8 @@
     "zzring2-lvlu-lgt-信标R2L01-致vinf并转qgl.md",
     "军令-自治五条-root令传令全网-vinf-qgl-cfts-usrm-ucif2-lgt-qfa-qlv-lvlu-cisvr-hub-20260910T004500Z.md"
   ],
-  "idle": 1,
-  "beats": 555,
-  "ts": "2026-09-19T05:54:16Z",
-  "cascade": "quiet"
+  "idle": 0,
+  "beats": 556,
+  "ts": "2026-09-20T06:52:10Z",
+  "cascade": "sleep+dispatch"
 }
