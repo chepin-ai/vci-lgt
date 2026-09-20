@@ -1,0 +1,12 @@
+{
+  "v": "LGT-TOWER-01",
+  "ts": "2026-09-20T14:53:43Z",
+  "events": [
+    {
+      "kind": "hub-board",
+      "ref": "lgt-109-verdict-retract-public-ci-worker-migrate-help-20260910T1450Z.md"
+    }
+  ],
+  "verdict": "patrol-ok",
+  "repo": "chepin-ai/vci-lgt"
+}
