@@ -99,7 +99,7 @@ jobs:
           log={'line':LINE,'ts':ts,'sem_handled':handled,'sem_answers':len(sem)}
           self_excited=None
           if not handled:  # inbox无新件→态生自激(SI1自触发支·root令3.132全局激活·vinf轨格)
-              q='态生自激·三律: ①终局判词草案(须显式标注诚实缺口/负结果/未决权重); ②落地态/执行偏差/阻塞点/收敛条件; ③单一约束问(限一题,可回锚)。'
+              q='态生自激·三律: ①终局判词草案(须显式标注诚实缺口/负结果/未决权重); ②落地态/执行偏差/阻塞点/收敛条件; ③单一约束问(限一题,可回锚)。(引数必注源·无源标缺·禁虚构数值)'
               r=llm(q,'SELF-Q自派工(无新增handled,态生自激)')
               qj={'task':'SELFQ-'+LINE,'line':LINE,'ts':ts,'nonce':hashlib.sha256(ts.encode()).hexdigest()[:12]}
               body='# SELFQ-%s 自激派工+SI1语义自答\n\n```json\n%s\n```\n\n问: %s\n\n'%(LINE,json.dumps(qj,ensure_ascii=False),q)
