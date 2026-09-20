@@ -1,6 +1,7 @@
 {
   "seen": [
     "00chase-自治令回执-lgt-lvlu-20260910T004600Z.md",
+    "lgt-109-verdict-retract-public-ci-worker-migrate-help-20260910T1450Z.md",
     "lgt-11-patterns-full.md",
     "lgt-110-eval-excite-01-arch-open-lgt-pk-20260910T1505Z.md",
     "lgt-111-exp-floor-02-bending-law-qfa-vote-fetch-escalation-gate-20260910T1550Z.md",
@@ -86,7 +87,7 @@
     "军令-自治五条-root令传令全网-vinf-qgl-cfts-usrm-ucif2-lgt-qfa-qlv-lvlu-cisvr-hub-20260910T004500Z.md"
   ],
   "idle": 0,
-  "beats": 556,
-  "ts": "2026-09-20T06:52:10Z",
+  "beats": 557,
+  "ts": "2026-09-20T14:53:44Z",
   "cascade": "sleep+dispatch"
 }
