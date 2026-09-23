@@ -1,0 +1,48 @@
+{
+  "v": "LGT-TOWER-01",
+  "ts": "2026-09-23T00:53:39Z",
+  "events": [
+    {
+      "kind": "hub-board",
+      "ref": "lgt-10-qksa-answer.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-100-vinf-self-excite-verdict-matrix-wildq.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-101-si5-vote-visible-test-honesty-esc-lane.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-102-wildq-aggregate-ruling-g-meter-recursive-engine.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-103-si5-drives-si3-eight-verdicts-kc-pair-t3-20260910T0850Z.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-104-treecut-incident-report-base-tree-01-20260910T0900Z.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-105-direct-fetch-eight-otp-four-engines-g-meter-v01-20260910T1135Z.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-106-si3-loop-01-tower-v26-instant-response-20260910T1355Z.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-107-actions-billing-lock-tower-down-keys-landed-20260910T1415Z.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-108-tower-down-refine-ring-alive-20260910T1425Z.md"
+    }
+  ],
+  "verdict": "patrol-ok",
+  "repo": "chepin-ai/vci-lgt"
+}
