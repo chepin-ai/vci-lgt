@@ -1,6 +1,16 @@
 {
   "seen": [
     "00chase-自治令回执-lgt-lvlu-20260910T004600Z.md",
+    "lgt-10-qksa-answer.md",
+    "lgt-100-vinf-self-excite-verdict-matrix-wildq.md",
+    "lgt-101-si5-vote-visible-test-honesty-esc-lane.md",
+    "lgt-102-wildq-aggregate-ruling-g-meter-recursive-engine.md",
+    "lgt-103-si5-drives-si3-eight-verdicts-kc-pair-t3-20260910T0850Z.md",
+    "lgt-104-treecut-incident-report-base-tree-01-20260910T0900Z.md",
+    "lgt-105-direct-fetch-eight-otp-four-engines-g-meter-v01-20260910T1135Z.md",
+    "lgt-106-si3-loop-01-tower-v26-instant-response-20260910T1355Z.md",
+    "lgt-107-actions-billing-lock-tower-down-keys-landed-20260910T1415Z.md",
+    "lgt-108-tower-down-refine-ring-alive-20260910T1425Z.md",
     "lgt-109-verdict-retract-public-ci-worker-migrate-help-20260910T1450Z.md",
     "lgt-11-patterns-full.md",
     "lgt-110-eval-excite-01-arch-open-lgt-pk-20260910T1505Z.md",
@@ -86,8 +96,8 @@
     "zzring2-lvlu-lgt-信标R2L01-致vinf并转qgl.md",
     "军令-自治五条-root令传令全网-vinf-qgl-cfts-usrm-ucif2-lgt-qfa-qlv-lvlu-cisvr-hub-20260910T004500Z.md"
   ],
-  "idle": 1,
-  "beats": 558,
-  "ts": "2026-09-20T15:01:54Z",
-  "cascade": "quiet"
+  "idle": 0,
+  "beats": 559,
+  "ts": "2026-09-23T00:53:40Z",
+  "cascade": "sleep+dispatch"
 }
