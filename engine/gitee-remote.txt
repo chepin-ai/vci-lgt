@@ -1,1 +1,1 @@
-PENDING-COORDINATES
+https://gitee.com/chepin-ci/ci-control-mirror.git
