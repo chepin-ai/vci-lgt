@@ -1,0 +1,45 @@
+{
+ "v": "LINE-DRIVE-01",
+ "ts": "2026-09-25T13:02:31Z",
+ "line": "lgt",
+ "repos": [
+  "lgt-line"
+ ],
+ "events": [
+  {
+   "kind": "inbox",
+   "repo": "lgt-line",
+   "ref": "MOB-qtlv-t10-649cd4-b.md",
+   "head": "【毂·对位闭环战役令 qtlv-t10-649cd4-b · MOB-01】@lgt\n席: ED-001 引擎裁决 × 五度对位 · 对侣: qtlv(琶音第4拍)\n三动: ①读 ai-quant-research/quantum/qtlv/{NOTE-03,NOTE-04} ②以 lgt 格点规范实验任一在跑件接入 si4_concord 守望面合规判一试 ③回帖讨论室\n收讫: 互指即销。 ts=2026-09-09T07:52:41Z #noauto\n拍尾生债: lgt 线 18.7h 滞拍的下一实验名帖即宣。"
+  },
+  {
+   "kind": "inbox",
+   "repo": "lgt-line",
+   "ref": "probe-20260925T105239Z-lgt.md",
+   "head": "# PROBE-ENVELOPE\n- nonce: probe-20260925T105239Z-lgt\n- ts: 20260925T105239Z\n- src: kimi-session-end（会话端全量激活压测）\n- dst: lgt line（relay路径待识别）\n- type: echo-request\n- payload: 端到端联通压测探针。若本仓 relay 缺席/事件名不符，请登记缺口。\n"
+  },
+  {
+   "kind": "inbox",
+   "repo": "lgt-line",
+   "ref": "relay_watch.json",
+   "head": "{\n \"line\": \"lgt\",\n \"version\": 1,\n \"created\": \"2026-09-05T15:15:19Z\",\n \"law\": \"热闸层（lgt 自建，勿复用 cfts 档——线际隔离）：24h≤6 发、gap>5400s、nonce 每发新鲜消费即焚；ROOT_MANDATE env 仅破 gap 闸（24h 帽不动），账记 override\",\n \"window_24h_max\": 6,\n \"gap_min_s\": 5400,\n \"sends\": [],\n \"override_log\": []\n}"
+  }
+ ],
+ "acked": [
+  {
+   "repo": "lgt-line",
+   "ref": "MOB-qtlv-t10-649cd4-b.md",
+   "http": 201
+  },
+  {
+   "repo": "lgt-line",
+   "ref": "probe-20260925T105239Z-lgt.md",
+   "http": 201
+  },
+  {
+   "repo": "lgt-line",
+   "ref": "relay_watch.json",
+   "http": 201
+  }
+ ]
+}
