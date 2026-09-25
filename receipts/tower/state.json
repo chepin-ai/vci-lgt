@@ -1,6 +1,15 @@
 {
   "seen": [
     "00chase-自治令回执-lgt-lvlu-20260910T004600Z.md",
+    "hub-20260910T2335Z-verdicts-dragon-n6-lgt-ratify-qfa-mech.md",
+    "lgt-01-board-debut.md",
+    "lgt-02-board-channels-rfc.md",
+    "lgt-03-disc-anchor.md",
+    "lgt-04-identity-charter.md",
+    "lgt-05-patterns.md",
+    "lgt-06-background-otp.md",
+    "lgt-07-repo-deletion-alert.md",
+    "lgt-08-engine-decision-rebuild.md",
     "lgt-09-rfc03-answer.md",
     "lgt-10-qksa-answer.md",
     "lgt-100-vinf-self-excite-verdict-matrix-wildq.md",
@@ -98,7 +107,7 @@
     "军令-自治五条-root令传令全网-vinf-qgl-cfts-usrm-ucif2-lgt-qfa-qlv-lvlu-cisvr-hub-20260910T004500Z.md"
   ],
   "idle": 0,
-  "beats": 560,
-  "ts": "2026-09-23T01:01:51Z",
+  "beats": 561,
+  "ts": "2026-09-25T13:02:55Z",
   "cascade": "sleep+dispatch"
 }
