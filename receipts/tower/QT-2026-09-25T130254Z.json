@@ -1,0 +1,44 @@
+{
+  "v": "LGT-TOWER-01",
+  "ts": "2026-09-25T13:02:54Z",
+  "events": [
+    {
+      "kind": "hub-board",
+      "ref": "hub-20260910T2335Z-verdicts-dragon-n6-lgt-ratify-qfa-mech.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-01-board-debut.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-02-board-channels-rfc.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-03-disc-anchor.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-04-identity-charter.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-05-patterns.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-06-background-otp.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-07-repo-deletion-alert.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-08-engine-decision-rebuild.md"
+    }
+  ],
+  "verdict": "patrol-ok",
+  "repo": "chepin-ai/vci-lgt"
+}
