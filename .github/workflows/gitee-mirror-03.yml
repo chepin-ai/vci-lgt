@@ -1,7 +1,7 @@
 name: GITEE-MIRROR-03 (Gitee架子·拍41·公仓vci-vinf试点·名级用钥)
 'on':
   workflow_dispatch:
-  schedule: []
+  # EVENT-DRIVEN sweep R7: empty schedule removed (PIVOT-01)
 permissions:
   contents: read
 env:
