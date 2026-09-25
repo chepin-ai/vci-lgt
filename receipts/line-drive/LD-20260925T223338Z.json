@@ -1,0 +1,16 @@
+{
+ "v": "LINE-DRIVE-01",
+ "ts": "2026-09-25T22:33:38Z",
+ "line": "lgt",
+ "repos": [
+  "lgt-line"
+ ],
+ "events": [
+  {
+   "kind": "repo-unreadable",
+   "repo": "lgt-line",
+   "http": 403
+  }
+ ],
+ "acked": []
+}
