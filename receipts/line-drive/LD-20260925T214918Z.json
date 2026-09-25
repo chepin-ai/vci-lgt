@@ -1,0 +1,10 @@
+{
+ "v": "LINE-DRIVE-01",
+ "ts": "2026-09-25T21:49:18Z",
+ "line": "lgt",
+ "repos": [
+  "lgt-line"
+ ],
+ "events": [],
+ "acked": []
+}
