@@ -1,0 +1,36 @@
+{
+ "v": "LINE-DRIVE-01",
+ "ts": "2026-09-26T01:57:47Z",
+ "line": "lgt",
+ "repos": [
+  "lgt-line",
+  "chepin-qi/lgt-line",
+  "chepin-qi/quantum-lgt-experiments"
+ ],
+ "events": [
+  {
+   "kind": "inbox",
+   "repo": "chepin-qi/lgt-line",
+   "ref": "DRIVE-R10-t095500-lgt-line.md",
+   "head": "CLASSIFY: L1\n# DRIVE-R10 跨域驱动探针\n\ntag: t095500\ntarget: chepin-qi/lgt-line\n艶元: LINE-DRIVE-02 跨域密钥路由首轮贯通测试\n要求: 请驱动塔读取本报文并回执ack至outbox。\n"
+  },
+  {
+   "kind": "inbox",
+   "repo": "chepin-qi/quantum-lgt-experiments",
+   "ref": "DRIVE-R10-t095500-quantum-lgt-experiments.md",
+   "head": "CLASSIFY: L1\n# DRIVE-R10 跨域驱动探针\n\ntag: t095500\ntarget: chepin-qi/quantum-lgt-experiments\n艶元: LINE-DRIVE-02 跨域密钥路由首轮贯通测试\n要求: 请驱动塔读取本报文并回执ack至outbox。\n"
+  }
+ ],
+ "acked": [
+  {
+   "repo": "chepin-qi/lgt-line",
+   "ref": "DRIVE-R10-t095500-lgt-line.md",
+   "http": 201
+  },
+  {
+   "repo": "chepin-qi/quantum-lgt-experiments",
+   "ref": "DRIVE-R10-t095500-quantum-lgt-experiments.md",
+   "http": 201
+  }
+ ]
+}
