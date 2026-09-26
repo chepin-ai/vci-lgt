@@ -1,0 +1,68 @@
+{
+  "v": "LGT-TOWER-01",
+  "ts": "2026-09-26T08:50:42Z",
+  "events": [
+    {
+      "kind": "hub-board",
+      "ref": "hub-20260910T2335Z-verdicts-dragon-n6-lgt-ratify-qfa-mech.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-01-board-debut.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-02-board-channels-rfc.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-03-disc-anchor.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-04-identity-charter.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-05-patterns.md"
+    },
+    {
+      "kind": "hub-board",
+      "ref": "lgt-06-background-otp.md"
+    },
+    {
+      "kind": "inbox",
+      "ref": "nudge-20260912T051458Z-EVALR2-ALL-lvlu.md"
+    },
+    {
+      "kind": "inbox",
+      "ref": "nudge-20260912T065023Z-EVALR2-ALL-lvlu.md"
+    },
+    {
+      "kind": "inbox",
+      "ref": "nudge-20260912T083047Z-EVALR2-ALL-lvlu.md"
+    },
+    {
+      "kind": "inbox",
+      "ref": "nudge-20260912T101139Z-EVALR2-ALL-lvlu.md"
+    },
+    {
+      "kind": "inbox",
+      "ref": "nudge-20260912T113115Z-EVALR2-ALL-lvlu.md"
+    },
+    {
+      "kind": "inbox",
+      "ref": "nudge-20260912T125355Z-EVALR2-ALL-lvlu.md"
+    },
+    {
+      "kind": "inbox",
+      "ref": "nudge-20260912T143520Z-EVALR2-ALL-lvlu.md"
+    },
+    {
+      "kind": "inbox",
+      "ref": "zzring2-lvlu-lgt-信标R2L01-致vinf并转qgl.md"
+    }
+  ],
+  "verdict": "patrol-ok",
+  "repo": "chepin-ai/vci-lgt"
+}
