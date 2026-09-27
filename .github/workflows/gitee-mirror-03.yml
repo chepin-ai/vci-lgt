@@ -1,6 +1,9 @@
 name: GITEE-MIRROR-03 (Gitee架子·拍41·公仓vci-vinf试点·名级用钥)
 'on':
   workflow_dispatch:
+  # SHADOW-REVIVAL-01连诊(枢/PIVOT-01): R7去定时后事件接线未补,镜像沉寂自09-09
+  repository_dispatch:
+    types: [gitee-mirror]
   # EVENT-DRIVEN sweep R7: empty schedule removed (PIVOT-01)
 permissions:
   contents: read

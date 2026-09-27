@@ -1,6 +1,9 @@
 name: GITEE-MIRROR-05 (Gitee架子全阵列·拍43·10公仓→chepin-ci·名级用钥)
 'on':
   workflow_dispatch:
+  # SHADOW-REVIVAL-01连诊(枢/PIVOT-01): R7去定时后事件接线未补,镜像沉寂自09-09
+  repository_dispatch:
+    types: [gitee-mirror]
 permissions:
   contents: read
 env:
