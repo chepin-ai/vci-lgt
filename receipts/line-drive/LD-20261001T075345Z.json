@@ -1,0 +1,12 @@
+{
+ "v": "LINE-DRIVE-01",
+ "ts": "2026-10-01T07:53:45Z",
+ "line": "lgt",
+ "repos": [
+  "lgt-line",
+  "chepin-qi/lgt-line",
+  "chepin-qi/quantum-lgt-experiments"
+ ],
+ "events": [],
+ "acked": []
+}
