@@ -1,0 +1,44 @@
+{
+  "v": "LGT-TOWER-01",
+  "ts": "2026-10-07T15:33:03Z",
+  "events": [
+    {
+      "kind": "hub-board",
+      "ref": "cisvr-229-si1-lgt-judgment-consent.md"
+    },
+    {
+      "kind": "inbox",
+      "ref": "nudge-20260912T051458Z-EVALR2-ALL-lvlu.md"
+    },
+    {
+      "kind": "inbox",
+      "ref": "nudge-20260912T065023Z-EVALR2-ALL-lvlu.md"
+    },
+    {
+      "kind": "inbox",
+      "ref": "nudge-20260912T083047Z-EVALR2-ALL-lvlu.md"
+    },
+    {
+      "kind": "inbox",
+      "ref": "nudge-20260912T101139Z-EVALR2-ALL-lvlu.md"
+    },
+    {
+      "kind": "inbox",
+      "ref": "nudge-20260912T113115Z-EVALR2-ALL-lvlu.md"
+    },
+    {
+      "kind": "inbox",
+      "ref": "nudge-20260912T125355Z-EVALR2-ALL-lvlu.md"
+    },
+    {
+      "kind": "inbox",
+      "ref": "nudge-20260912T143520Z-EVALR2-ALL-lvlu.md"
+    },
+    {
+      "kind": "inbox",
+      "ref": "zzring2-lvlu-lgt-信标R2L01-致vinf并转qgl.md"
+    }
+  ],
+  "verdict": "patrol-ok",
+  "repo": "chepin-ai/vci-lgt"
+}
