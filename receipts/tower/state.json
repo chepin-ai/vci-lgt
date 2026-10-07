@@ -1,19 +1,7 @@
 {
-  "seen": [
-    "cisvr-229-si1-lgt-judgment-consent.md",
-    "hub-20260910T2335Z-verdicts-dragon-n6-lgt-ratify-qfa-mech.md",
-    "lgt-01-board-debut.md",
-    "nudge-20260912T051458Z-EVALR2-ALL-lvlu.md",
-    "nudge-20260912T065023Z-EVALR2-ALL-lvlu.md",
-    "nudge-20260912T083047Z-EVALR2-ALL-lvlu.md",
-    "nudge-20260912T101139Z-EVALR2-ALL-lvlu.md",
-    "nudge-20260912T113115Z-EVALR2-ALL-lvlu.md",
-    "nudge-20260912T125355Z-EVALR2-ALL-lvlu.md",
-    "nudge-20260912T143520Z-EVALR2-ALL-lvlu.md",
-    "zzring2-lvlu-lgt-信标R2L01-致vinf并转qgl.md"
-  ],
-  "idle": 52,
-  "beats": 813,
-  "ts": "2026-10-07T14:56:46Z",
+  "seen": [],
+  "idle": 1,
+  "beats": 1,
+  "ts": "2026-10-07T15:28:41Z",
   "cascade": "quiet"
 }
