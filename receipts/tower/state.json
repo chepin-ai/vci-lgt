@@ -12,8 +12,8 @@
     "nudge-20260912T143520Z-EVALR2-ALL-lvlu.md",
     "zzring2-lvlu-lgt-信标R2L01-致vinf并转qgl.md"
   ],
-  "idle": 0,
-  "beats": 761,
-  "ts": "2026-10-07T02:34:06Z",
-  "cascade": "sleep+dispatch"
+  "idle": 1,
+  "beats": 762,
+  "ts": "2026-10-07T02:42:21Z",
+  "cascade": "quiet"
 }
