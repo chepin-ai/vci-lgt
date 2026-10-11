@@ -103,3 +103,4 @@
 {"line": "lgt", "ts": "20261011T004509Z", "sem_handled": ["LABJUDGE-EXT07-lgt.md"], "sem_answers": 1}
 {"line": "lgt", "ts": "20261011T005653Z", "sem_handled": [], "sem_answers": 0, "self_excited": {"nonce": "1d1fd945ea58", "engine": "DEEPSEEK_API_KEY", "model": "deepseek-chat"}}
 {"line": "lgt", "ts": "20261011T011015Z", "sem_handled": ["LABJUDGE-EXT07B-lgt.md"], "sem_answers": 1}
+{"line": "lgt", "ts": "20261011T071002Z", "sem_handled": ["LABJUDGE-EXT08-lgt.md"], "sem_answers": 1}
