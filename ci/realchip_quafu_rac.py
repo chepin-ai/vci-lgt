@@ -9,6 +9,7 @@ MODE=os.environ.get('MODE','SIM').upper()
 ROOT=Path.cwd()
 PREREG=json.loads((ROOT/'ci/QUAFU-RAC-PREFLIGHT-LGT-01.json').read_text())
 RECEIPT=Path(os.environ.get('RECEIPT_PATH','receipts/quafu-rac-receipt.json'))
+SPENT_PATH=ROOT/'ci/QUAFU-RAC-FIRE-SPENT-LGT-01.json'
 NOW=datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 KEY=os.environ.get('QUAFU_KEY','')
 R=PREREG['real_submission']; P=PREREG['pilot']; G=PREREG['local_simulation_gate']
@@ -112,6 +113,7 @@ def completed_result(res):
 
 try:
     if MODE not in ['SIM','FIRE','RETRIEVE']: raise ValueError('invalid MODE')
+    if MODE=='FIRE' and SPENT_PATH.exists(): raise RuntimeError('FIRE spend marker exists; second send forbidden before authentication')
     if not KEY: raise RuntimeError('QUAFU_KEY missing')
     user=User(KEY)
     if MODE=='RETRIEVE':
