@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-# QUAFU-PROBE-02 · 源码对齐 Backend.name/qubit_num/status/task_in_queue；零量子 job。
+# QUAFU-PROBE-03 · 修复 dict/对象分派；源码对齐 Backend 字段；零量子 job（本版未发射）。
 import os,json,sys,subprocess,datetime,inspect,urllib.parse
 TS=datetime.datetime.now(datetime.UTC).strftime('%Y%m%dT%H%M%SZ')
-out={'v':'QUAFU-PROBE-02','ts':TS,'job_submitted':False,'probe':{}}
+out={'v':'QUAFU-PROBE-03','ts':TS,'job_submitted':False,'probe':{}}
 key=os.environ.get('QUAFU_API_KEY','').strip()
 out['probe']['secret_present']=bool(key)
 def clean(x):
@@ -31,10 +31,10 @@ try:
    elif isinstance(backs,(list,tuple)): iterable=[(None,b) for b in backs]
    else: iterable=[(None,backs)]
    for label,b in iterable:
-    info=b if isinstance(b,dict) else {}
+    info=b if isinstance(b,dict) else None
     def field(names,stringify=False):
      for n in names:
-      v=info.get(n) if isinstance(info,dict) else getattr(b,n,None)
+      v=info.get(n) if info is not None else getattr(b,n,None)
       p=primitive(v)
       if p is not None: return p
       if stringify and v is not None: return clean(v)
