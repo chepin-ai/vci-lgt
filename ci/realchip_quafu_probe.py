@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-# QUAFU-PROBE-01 · 只验凭证与后端清单；不构造 Task、不 send/submit/run，零量子 job。
+# QUAFU-PROBE-02 · 源码对齐 Backend.name/qubit_num/status/task_in_queue；零量子 job。
 import os,json,sys,subprocess,datetime,inspect,urllib.parse
 TS=datetime.datetime.now(datetime.UTC).strftime('%Y%m%dT%H%M%SZ')
-out={'v':'QUAFU-PROBE-01','ts':TS,'job_submitted':False,'probe':{}}
+out={'v':'QUAFU-PROBE-02','ts':TS,'job_submitted':False,'probe':{}}
 key=os.environ.get('QUAFU_API_KEY','').strip()
 out['probe']['secret_present']=bool(key)
 def clean(x):
@@ -32,15 +32,17 @@ try:
    else: iterable=[(None,backs)]
    for label,b in iterable:
     info=b if isinstance(b,dict) else {}
-    def field(names):
+    def field(names,stringify=False):
      for n in names:
       v=info.get(n) if isinstance(info,dict) else getattr(b,n,None)
-      v=primitive(v)
-      if v is not None: return v
+      p=primitive(v)
+      if p is not None: return p
+      if stringify and v is not None: return clean(v)
      return None
     rows.append({'name':field(['system_name','name','backend_name']) or (label if isinstance(label,str) else None),
-                 'qubits':field(['qubits','num_qubits','n_qubits']),
-                 'status':field(['status','state'])})
+                 'qubits':field(['qubits','qubit_num','num_qubits','n_qubits']),
+                 'status':field(['status','state'],stringify=True),
+                 'queue':field(['task_in_queue','queued_len'])})
    out['probe']['backends']={'count':len(rows),'items':rows}
   except Exception as e:
    out['probe']['backends']={'ok':False,'error':type(e).__name__+':'+clean(e)}
