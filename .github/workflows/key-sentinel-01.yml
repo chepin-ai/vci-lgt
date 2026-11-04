@@ -25,4 +25,8 @@ jobs:
           git config user.email "key-sentinel@users.noreply.github.com"
           git add receipts/key-sentinel/ || true
           git diff --cached --quiet || git commit -m "key-sentinel receipt [skip ci]"
-          git push
+          for i in 1 2 3 4 5 6; do
+            git pull --rebase -q origin main && git push -q origin HEAD:main && exit 0
+            sleep 5
+          done
+          echo "::error::push failed after 6 retries"; exit 1
