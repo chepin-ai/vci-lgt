@@ -1,0 +1,62 @@
+name: QUAFU-RAC-LGT-01
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: SIM, FIRE, or RETRIEVE
+        required: true
+        default: SIM
+        type: choice
+        options: [SIM, FIRE, RETRIEVE]
+      task_id:
+        description: Existing task id for RETRIEVE only
+        required: false
+        type: string
+      confirmation:
+        description: FIRE requires V147-ONE-SEND
+        required: false
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: quafu-rac-lgt-01-production
+  cancel-in-progress: false
+jobs:
+  rac:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check pyquafu==0.4.5
+      - name: RAC simulation gate and preregistered platform operation
+        env:
+          MODE: ${{ inputs.mode }}
+          TASK_ID: ${{ inputs.task_id }}
+          CONFIRMATION: ${{ inputs.confirmation }}
+          QUAFU_KEY: ${{ secrets.QUAFU_KEY }}
+          RECEIPT_PATH: receipts/quafu-rac-${{ github.run_id }}.json
+        run: python ci/realchip_quafu_rac.py
+      - name: Commit receipt with bounded rebase; never mask platform or push failure
+        if: always()
+        env:
+          RECEIPT_PATH: receipts/quafu-rac-${{ github.run_id }}.json
+        run: |
+          if [ ! -f "$RECEIPT_PATH" ]; then echo "no receipt file"; exit 0; fi
+          git config user.name lgt-bot
+          git config user.email lgt-bot@users.noreply.github.com
+          git add "$RECEIPT_PATH"
+          git commit -m "QUAFU-RAC receipt ${{ github.run_id }}"
+          for i in 1 2 3 4 5; do
+            if git push; then exit 0; fi
+            git pull --rebase origin main
+            sleep 2
+          done
+          git push
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: quafu-rac-${{ github.run_id }}
+          path: receipts/quafu-rac-${{ github.run_id }}.json
+          if-no-files-found: ignore
