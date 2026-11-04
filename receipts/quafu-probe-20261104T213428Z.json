@@ -1,0 +1,99 @@
+{
+ "v": "QUAFU-PROBE-01",
+ "ts": "20261104T213428Z",
+ "job_submitted": false,
+ "probe": {
+  "secret_present": true,
+  "sdk_version": "0.4.5",
+  "User_signature": "(self, api_token: Optional[str] = None, token_dir: Optional[str] = None)",
+  "auth": {
+   "ok": true,
+   "constructor": "User(api_token)"
+  },
+  "backends": {
+   "count": 16,
+   "items": [
+    {
+     "name": "ScQ-P10",
+     "qubits": null,
+     "status": null
+    },
+    {
+     "name": "ScQ-P18",
+     "qubits": null,
+     "status": null
+    },
+    {
+     "name": "Baiwang",
+     "qubits": null,
+     "status": null
+    },
+    {
+     "name": "ScQ-P102",
+     "qubits": null,
+     "status": null
+    },
+    {
+     "name": "ScQ-Sim10",
+     "qubits": null,
+     "status": null
+    },
+    {
+     "name": "Miaofeng",
+     "qubits": null,
+     "status": null
+    },
+    {
+     "name": "Dongling",
+     "qubits": null,
+     "status": null
+    },
+    {
+     "name": "Haituo",
+     "qubits": null,
+     "status": null
+    },
+    {
+     "name": "Baihua",
+     "qubits": null,
+     "status": null
+    },
+    {
+     "name": "Yunmeng",
+     "qubits": null,
+     "status": null
+    },
+    {
+     "name": "Xiang",
+     "qubits": null,
+     "status": null
+    },
+    {
+     "name": "ScQ-TEST",
+     "qubits": null,
+     "status": null
+    },
+    {
+     "name": "ScQ-P21",
+     "qubits": null,
+     "status": null
+    },
+    {
+     "name": "ScQ-Sim",
+     "qubits": null,
+     "status": null
+    },
+    {
+     "name": "ScQ-P3",
+     "qubits": null,
+     "status": null
+    },
+    {
+     "name": "ScQ-P5",
+     "qubits": null,
+     "status": null
+    }
+   ]
+  }
+ }
+}
