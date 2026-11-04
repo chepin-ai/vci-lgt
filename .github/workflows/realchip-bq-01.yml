@@ -1,0 +1,35 @@
+# REALCHIP-BQ-01 · lgt 自决轨：BlueQubit 真机对拍（其他平台优先律）
+# PROBE=只探 SDK 登录与设备面，零 job 零机时；FIRE=候 PROBE 回执后另拍发射（单次零重试）。
+name: realchip-bq-01
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'PROBE(探针) or FIRE(发射)'
+        required: true
+        default: 'PROBE'
+permissions:
+  contents: write
+jobs:
+  bq:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: probe (zero job, zero retry, secrets value never printed)
+        if: ${{ github.event.inputs.mode == 'PROBE' }}
+        env:
+          BLUEQUBIT_GMAIL: ${{ secrets.BLUEQUBIT_GMAIL }}
+          BLUEQUBIT_PW: ${{ secrets.BLUEQUBIT_PW }}
+        run: python3 ci/realchip_bq_probe.py
+      - name: commit receipt
+        run: |
+          git config user.name "lgt-realchip"
+          git config user.email "lgt-realchip@users.noreply.github.com"
+          mkdir -p receipts
+          git add receipts/ || true
+          git commit -m "BQ-PROBE receipt $(date -u +%Y%m%dT%H%M%SZ)" || true
+          git push || true
