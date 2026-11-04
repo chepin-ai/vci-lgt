@@ -1,0 +1,32 @@
+name: realchip-quafu-01
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: '仅 PROBE：后端清单，零任务'
+        required: true
+        default: 'PROBE'
+permissions:
+  contents: write
+jobs:
+  quafu-probe:
+    if: ${{ github.event.inputs.confirm == 'PROBE' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: probe backends (zero job, zero retry, secret value never printed)
+        env:
+          QUAFU_API_KEY: ${{ secrets.QUAFU_KEY }}
+        run: python3 ci/realchip_quafu_probe.py
+      - name: commit receipt
+        run: |
+          git config user.name "lgt-realchip"
+          git config user.email "lgt-realchip@users.noreply.github.com"
+          mkdir -p receipts
+          git add receipts/
+          git commit -m "QUAFU-PROBE receipt $(date -u +%Y%m%dT%H%M%SZ)" || true
+          git push || true
