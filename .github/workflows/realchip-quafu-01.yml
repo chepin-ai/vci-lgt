@@ -29,5 +29,9 @@ jobs:
           mkdir -p receipts
           git add receipts/
           git commit -m "QUAFU-PROBE receipt $(date -u +%Y%m%dT%H%M%SZ)"
-          git pull --rebase origin main
+          for i in 1 2 3 4 5; do
+            if git push; then exit 0; fi
+            git pull --rebase origin main
+            sleep 2
+          done
           git push
