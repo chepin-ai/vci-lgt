@@ -1,0 +1,77 @@
+{
+  "schema": "lgt.quafu.rac.prereg.v1",
+  "experiment_id": "V147-QUAFU-RAC-PILOT-01",
+  "ts_plan": "2026-11-04T21:52:57Z",
+  "platform": "Quafu",
+  "sdk": "pyquafu==0.4.5",
+  "backend_policy": {
+    "selected": "ScQ-P5",
+    "min_qubits": 2,
+    "required_status": "Online",
+    "fallback_backends": [],
+    "queue_is_not_a_gate": true,
+    "reason": "两比特单格探针可由 ScQ-P5 容纳；Baihua 直发边界本轮未复核，不切换。"
+  },
+  "pilot": {
+    "x1": 1,
+    "x2": 1,
+    "basis": "X",
+    "expected_parity": 1,
+    "qubits": 2,
+    "classical_bits": 2,
+    "gates": [
+      "H(0)",
+      "CNOT(0,1)",
+      "X(0)",
+      "Z(0)",
+      "H(0)",
+      "H(1)"
+    ],
+    "selection_reason": "单格同时覆盖 H/CNOT/X/Z 与 X 基双 H；理想末态为 Ψ−，XX 奇校验为 1。"
+  },
+  "local_simulation_gate": {
+    "bit_mapping_known_answers": [
+      {
+        "prepare": "X(0)",
+        "expected": "10"
+      },
+      {
+        "prepare": "X(1)",
+        "expected": "01"
+      }
+    ],
+    "rac_cells": 8,
+    "shots_per_cell": 1024,
+    "S_sim_min": 0.9,
+    "qrand": {
+      "qubits": 8,
+      "shots": 1024,
+      "bins": 256,
+      "df": 255,
+      "chi2_p_min": 0.01,
+      "real_chip_submission": false
+    }
+  },
+  "real_submission": {
+    "api": "Task.send",
+    "max_send_calls": 1,
+    "circuits": 1,
+    "shots": 1024,
+    "compile": true,
+    "priority": 2,
+    "wait": false,
+    "retry": 0,
+    "confirmation": "V147-ONE-SEND",
+    "task_name": "LGT-V147-RAC11X",
+    "group": "LGT-V147",
+    "retrieval": "Task.retrieve(task_id) only; never resubmit",
+    "on_ambiguous_response": "UNCERTAIN_NO_RETRY"
+  },
+  "scope_exclusions": [
+    "不把单格 S_real_pilot 写成八格 S_real",
+    "不在真机跑 QRAND H8",
+    "不宣称九电路单次批量",
+    "未获完整真机指纹前不推进 WILDQ-LGT-08 判据组 C"
+  ],
+  "change_control": "任何偏离预注册的后端、电路、shots、任务数或重试语义，必须在 send 前 abort。"
+}
