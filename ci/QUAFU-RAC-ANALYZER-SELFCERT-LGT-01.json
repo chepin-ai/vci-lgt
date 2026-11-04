@@ -1,0 +1,103 @@
+{
+  "schema": "lgt.quafu.rac.analyzer.selfcert.v1",
+  "known_answers": [
+    {
+      "case": "sim_known",
+      "counts": {
+        "00": 0,
+        "01": 513,
+        "10": 511,
+        "11": 0
+      },
+      "S": 1.0,
+      "even_error_rate": 0.0,
+      "TV": 0.0009765625,
+      "odd_balance_p": 0.9501646619415055,
+      "wilson95": [
+        0.9962625959599825,
+        1.0
+      ],
+      "pass": true
+    },
+    {
+      "case": "uniform",
+      "counts": {
+        "00": 250,
+        "01": 250,
+        "10": 250,
+        "11": 250
+      },
+      "S": 0.5,
+      "even_error_rate": 0.5,
+      "TV": 0.5,
+      "odd_balance_p": 1.0,
+      "wilson95": [
+        0.4690696003681042,
+        0.5309303996318958
+      ],
+      "pass": true
+    },
+    {
+      "case": "all_even",
+      "counts": {
+        "00": 1024,
+        "01": 0,
+        "10": 0,
+        "11": 0
+      },
+      "S": 0.0,
+      "even_error_rate": 1.0,
+      "TV": 1.0,
+      "odd_balance_p": null,
+      "wilson95": [
+        0.0,
+        0.0037374040400176777
+      ],
+      "pass": true
+    },
+    {
+      "case": "single_odd",
+      "counts": {
+        "00": 0,
+        "01": 1024,
+        "10": 0,
+        "11": 0
+      },
+      "S": 1.0,
+      "even_error_rate": 0.0,
+      "TV": 0.5,
+      "odd_balance_p": 1.0904161207024028e-224,
+      "wilson95": [
+        0.9962625959599825,
+        1.0
+      ],
+      "pass": true
+    },
+    {
+      "case": "mixed",
+      "counts": {
+        "00": 24,
+        "01": 600,
+        "10": 400,
+        "11": 0
+      },
+      "S": 0.9765625,
+      "even_error_rate": 0.0234375,
+      "TV": 0.109375,
+      "odd_balance_p": 2.53962858947086e-10,
+      "wilson95": [
+        0.9653625436379698,
+        0.9842002431363885
+      ],
+      "pass": true
+    }
+  ],
+  "empty_counts_rejected_from_scoring": true,
+  "invalid_bitstring_rejected": true,
+  "scipy_df1_crosscheck_max_abs_error": 3.618915179919496e-25,
+  "independent_exact_TV": "fractions.Fraction expected values",
+  "verdict": "PASS",
+  "platform_calls": 0,
+  "quantum_jobs": 0
+}
+
