@@ -8,6 +8,8 @@ from quafu import QuantumCircuit, simulate, User
 MODE=os.environ.get('MODE','SIM').upper()
 ROOT=Path.cwd()
 PREREG=json.loads((ROOT/'ci/QUAFU-RAC-PREFLIGHT-LGT-01.json').read_text())
+sys.path.insert(0,str(ROOT))
+from ci.quafu_rac_analysis import analyze_pilot_counts
 RECEIPT=Path(os.environ.get('RECEIPT_PATH','receipts/quafu-rac-receipt.json'))
 SPENT_PATH=ROOT/'ci/QUAFU-RAC-FIRE-SPENT-LGT-01.json'
 NOW=datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
@@ -108,6 +110,9 @@ def completed_result(res):
         s,hit,total=score_counts(counts,P['expected_parity'])
         out.update({'S_real_pilot':s,'hits':hit,'shots_returned':total,'shots_preregistered':R['shots'],
                     'scope':'single RAC cell only; not eight-cell S_real'})
+        analysis=analyze_pilot_counts(counts)
+        assert abs(s-analysis['S_real_pilot'])<1e-15
+        out['analysis']=analysis
         receipt['S_real_pilot']=s
     return out
 
