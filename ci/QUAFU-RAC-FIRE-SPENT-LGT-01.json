@@ -1,0 +1,13 @@
+{
+  "schema": "lgt.quafu.rac.fire-spent.v1",
+  "experiment_id": "V147-QUAFU-RAC-PILOT-01",
+  "fire_run_id": 41922704802,
+  "task_id": "91C842B01A238734",
+  "qasm_sha256": "24aea2fed6cea4bb6aa1532278b7d33984640de8055acdca29462ace0c0921c6",
+  "send_attempts": 1,
+  "new_quantum_jobs_confirmed": 1,
+  "retry": 0,
+  "send_budget_remaining": 0,
+  "created_from_receipt": "receipts/quafu-rac-41922704802.json",
+  "rule": "Any later FIRE aborts before User authentication and before Task.send; RETRIEVE remains allowed."
+}
