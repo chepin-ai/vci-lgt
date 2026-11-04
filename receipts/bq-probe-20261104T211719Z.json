@@ -1,0 +1,43 @@
+{
+ "v": "BQ-PROBE-01",
+ "ts": "20261104T211719Z",
+ "probe": {
+  "secrets_present": {
+   "email": true,
+   "pw": true
+  },
+  "sdk_version": "0.19.0b1",
+  "sdk_symbols": [
+   "Any",
+   "BQClient",
+   "CircuitInfo",
+   "EstimateResult",
+   "JobResult",
+   "TYPE_CHECKING",
+   "annotations",
+   "api",
+   "backend_connection",
+   "bluequbit_client",
+   "bluequbit_logger",
+   "check_version",
+   "circuit_info",
+   "circuit_serialization",
+   "computation_local",
+   "contextlib",
+   "estimate_result",
+   "exceptions",
+   "host_info",
+   "http_utils"
+  ],
+  "BQClient_signature": "(self, api_token: 'str | None' = None, execution_mode: 'str | None' = None)",
+  "login": {
+   "ok": false,
+   "errors": [
+    "BQClient['email', 'password']:TypeError",
+    "BQClient['password', 'username']:TypeError",
+    "BQClient['api_token']:BQUnauthorizedAccessError:BlueQubit client was not authorized. For full functionality please specify an AP",
+    "BQClient['token']:TypeError"
+   ]
+  }
+ }
+}
