@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""V147 Quafu RAC pilot: local simulation gate; at most one real Task.send."""
+"""V147 Quafu RAC pilot: one-send pilot with preregistered analysis and immutable retrieval history."""
 import os, sys, json, hashlib, datetime, re
 from pathlib import Path
 from scipy.stats import chisquare
@@ -10,8 +10,10 @@ ROOT=Path.cwd()
 PREREG=json.loads((ROOT/'ci/QUAFU-RAC-PREFLIGHT-LGT-01.json').read_text())
 sys.path.insert(0,str(ROOT))
 from ci.quafu_rac_analysis import analyze_pilot_counts
+from ci.quafu_rac_immutable import make_snapshot, append_snapshot
 RECEIPT=Path(os.environ.get('RECEIPT_PATH','receipts/quafu-rac-receipt.json'))
 SPENT_PATH=ROOT/'ci/QUAFU-RAC-FIRE-SPENT-LGT-01.json'
+HISTORY_PATH=ROOT/'ci/QUAFU-RAC-RETRIEVAL-HISTORY-LGT-01.json'
 NOW=datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 KEY=os.environ.get('QUAFU_KEY','')
 R=PREREG['real_submission']; P=PREREG['pilot']; G=PREREG['local_simulation_gate']
@@ -106,7 +108,11 @@ def completed_result(res):
          'task_name':getattr(res,'taskname',None)}
     counts=getattr(res,'logicalq_res',None) or getattr(res,'counts',None) or {}
     out['counts']=counts
-    if status=='Completed' and counts:
+    return out
+
+def score_completed_result(out):
+    if out.get('task_status')=='Completed' and out.get('counts'):
+        counts=out['counts']
         s,hit,total=score_counts(counts,P['expected_parity'])
         out.update({'S_real_pilot':s,'hits':hit,'shots_returned':total,'shots_preregistered':R['shots'],
                     'scope':'single RAC cell only; not eight-cell S_real'})
@@ -114,6 +120,23 @@ def completed_result(res):
         assert abs(s-analysis['S_real_pilot'])<1e-15
         out['analysis']=analysis
         receipt['S_real_pilot']=s
+    return out
+
+def record_retrieval(out):
+    history=json.loads(HISTORY_PATH.read_text())
+    run_id=os.environ.get('GITHUB_RUN_ID','')
+    if not run_id.isdigit():
+        raise RuntimeError('numeric GITHUB_RUN_ID required for immutable history')
+    snap=make_snapshot(run_id,out['task_id'],out['task_status'],out['counts'],str(RECEIPT),
+                       'UNSEALED_CURRENT_RECEIPT',
+                       datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'))
+    history=append_snapshot(history,snap)
+    HISTORY_PATH.write_text(json.dumps(history,ensure_ascii=False,indent=2,sort_keys=True)+'\n')
+    out['counts_sha256']=snap['counts_sha256']
+    out['immutable_audit']=history['audit']
+    receipt['immutable_audit']=history['audit']
+    if history['audit']['immutable_violation']:
+        raise RuntimeError('immutable counts violation; scoring forbidden and conflicting evidence preserved')
     return out
 
 try:
@@ -128,6 +151,8 @@ try:
         task=Task(user)
         res=task.retrieve(int(tid) if tid.isdigit() else tid)
         receipt['retrieval']=completed_result(res); receipt['task_id']=receipt['retrieval']['task_id']
+        record_retrieval(receipt['retrieval'])
+        score_completed_result(receipt['retrieval'])
         receipt['new_quantum_jobs_confirmed']=0
         receipt['ok']=receipt['retrieval']['task_status'] not in ['Failed','Canceled']
     else:
@@ -149,7 +174,7 @@ try:
             receipt['send_attempts']=1
             res=task.send(pilot,name=R['task_name'],group=R['group'],wait=False)  # exactly once; no retry
             receipt['new_quantum_jobs_confirmed']=1
-            receipt['submission']=completed_result(res); receipt['task_id']=receipt['submission']['task_id']
+            receipt['submission']=score_completed_result(completed_result(res)); receipt['task_id']=receipt['submission']['task_id']
             receipt['ok']=receipt['task_id'] is not None
         else:
             receipt['fire_executed']=False; receipt['ok']=eligible
