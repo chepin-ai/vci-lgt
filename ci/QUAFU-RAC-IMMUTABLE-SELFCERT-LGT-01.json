@@ -1,0 +1,180 @@
+{
+  "analyzer_used_on_real_counts": false,
+  "beat": "V-149",
+  "checks": {
+    "counts_hash_crosscheck": [
+      {
+        "analyzer_sha256": "9175a3357068e95ed6097d6c2e3aa2692b074c4bbcf0c24f24320c0c7250bf60",
+        "counts": {
+          "00": 0,
+          "01": 0,
+          "10": 0,
+          "11": 0
+        },
+        "immutable_sha256": "9175a3357068e95ed6097d6c2e3aa2692b074c4bbcf0c24f24320c0c7250bf60",
+        "match": true
+      },
+      {
+        "analyzer_sha256": "065fbaa66e49220eb7d9221d91e95d18265c0bbdd76d13712ae5c20143897c09",
+        "counts": {
+          "00": 0,
+          "01": 513,
+          "10": 511,
+          "11": 0
+        },
+        "immutable_sha256": "065fbaa66e49220eb7d9221d91e95d18265c0bbdd76d13712ae5c20143897c09",
+        "match": true
+      },
+      {
+        "analyzer_sha256": "0bd8695f1c9676116ec4628d4449090521fb063cd6effdf695e45a9a32a906b0",
+        "counts": {
+          "00": 24,
+          "01": 600,
+          "10": 400,
+          "11": 0
+        },
+        "immutable_sha256": "0bd8695f1c9676116ec4628d4449090521fb063cd6effdf695e45a9a32a906b0",
+        "match": true
+      },
+      {
+        "analyzer_sha256": "a55d01fbafd68b7e5bee6de0904cf1bfe08a99b1b95e354ab003a67e80fce406",
+        "counts": {
+          "00": 250,
+          "01": 250,
+          "10": 250,
+          "11": 250
+        },
+        "immutable_sha256": "a55d01fbafd68b7e5bee6de0904cf1bfe08a99b1b95e354ab003a67e80fce406",
+        "match": true
+      }
+    ],
+    "module_status_transitions": [
+      "NO_COMPLETED",
+      "FIRST_COMPLETED",
+      "IMMUTABLE_OK",
+      "IMMUTABLE_VIOLATION"
+    ],
+    "production_integration": {
+      "cases": [
+        {
+          "S_real_pilot": null,
+          "analysis_present": false,
+          "error_type": null,
+          "history_audit": {
+            "completed_snapshots": 0,
+            "distinct_completed_counts_sha256": [],
+            "immutable_violation": false,
+            "rule": "Completed canonical counts must be byte-identical across retrieval; never select a preferred result",
+            "scoring_allowed": true,
+            "snapshots": 4,
+            "status": "NO_COMPLETED"
+          },
+          "input_counts": {},
+          "input_status": "In Queue",
+          "new_quantum_jobs_confirmed": 0,
+          "ok": true,
+          "returncode": 0,
+          "run_id": 9001,
+          "send_attempts": 0
+        },
+        {
+          "S_real_pilot": 1.0,
+          "analysis_present": true,
+          "error_type": null,
+          "history_audit": {
+            "completed_snapshots": 1,
+            "distinct_completed_counts_sha256": [
+              "065fbaa66e49220eb7d9221d91e95d18265c0bbdd76d13712ae5c20143897c09"
+            ],
+            "immutable_violation": false,
+            "rule": "Completed canonical counts must be byte-identical across retrieval; never select a preferred result",
+            "scoring_allowed": true,
+            "snapshots": 5,
+            "status": "FIRST_COMPLETED"
+          },
+          "input_counts": {
+            "01": 513,
+            "10": 511
+          },
+          "input_status": "Completed",
+          "new_quantum_jobs_confirmed": 0,
+          "ok": true,
+          "returncode": 0,
+          "run_id": 9002,
+          "send_attempts": 0
+        },
+        {
+          "S_real_pilot": 1.0,
+          "analysis_present": true,
+          "error_type": null,
+          "history_audit": {
+            "completed_snapshots": 2,
+            "distinct_completed_counts_sha256": [
+              "065fbaa66e49220eb7d9221d91e95d18265c0bbdd76d13712ae5c20143897c09"
+            ],
+            "immutable_violation": false,
+            "rule": "Completed canonical counts must be byte-identical across retrieval; never select a preferred result",
+            "scoring_allowed": true,
+            "snapshots": 6,
+            "status": "IMMUTABLE_OK"
+          },
+          "input_counts": {
+            "01": 513,
+            "10": 511
+          },
+          "input_status": "Completed",
+          "new_quantum_jobs_confirmed": 0,
+          "ok": true,
+          "returncode": 0,
+          "run_id": 9003,
+          "send_attempts": 0
+        },
+        {
+          "S_real_pilot": null,
+          "analysis_present": false,
+          "error_type": "RuntimeError",
+          "history_audit": {
+            "completed_snapshots": 3,
+            "distinct_completed_counts_sha256": [
+              "065fbaa66e49220eb7d9221d91e95d18265c0bbdd76d13712ae5c20143897c09",
+              "6c4c9a94231d5dab56d0ccdd93a94d73668286295acd12256bde37c9b12d9008"
+            ],
+            "immutable_violation": true,
+            "rule": "Completed canonical counts must be byte-identical across retrieval; never select a preferred result",
+            "scoring_allowed": false,
+            "snapshots": 7,
+            "status": "IMMUTABLE_VIOLATION"
+          },
+          "input_counts": {
+            "01": 512,
+            "10": 512
+          },
+          "input_status": "Completed",
+          "new_quantum_jobs_confirmed": 0,
+          "ok": false,
+          "returncode": 1,
+          "run_id": 9004,
+          "send_attempts": 0
+        }
+      ],
+      "mode": "offline_known_answer_stub",
+      "send_called": false
+    },
+    "static_integration": {
+      "history_before_scoring": true,
+      "history_committed_and_uploaded": true,
+      "single_send_call": true,
+      "spent_guard_before_auth_and_send": true,
+      "violation_before_scoring": true
+    },
+    "tamper_and_contamination_rejected": true
+  },
+  "real_platform_calls": 0,
+  "real_quantum_jobs": 0,
+  "real_task_status_at_v149_retrieval": "In Queue",
+  "schema": "lgt.quafu.rac.immutable-selfcert.v1",
+  "scope": "Offline known-answer validation only; no claim about real counts or eight-cell RAC/QRAND",
+  "ts": "2026-11-06T03:14:00Z",
+  "verdict": "PASS",
+  "weakening": "Conflict path tested offline against production code; no second FIRE and no additional real retrieval were used for testing"
+}
