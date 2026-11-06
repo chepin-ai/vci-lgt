@@ -1,0 +1,115 @@
+{
+ "v": "QUAFU-PROBE-03",
+ "ts": "20261106T041123Z",
+ "job_submitted": false,
+ "probe": {
+  "secret_present": true,
+  "sdk_version": "0.4.5",
+  "User_signature": "(self, api_token: Optional[str] = None, token_dir: Optional[str] = None)",
+  "auth": {
+   "ok": true,
+   "constructor": "User(api_token)"
+  },
+  "backends": {
+   "count": 16,
+   "items": [
+    {
+     "name": "ScQ-P10",
+     "qubits": 10,
+     "status": "Offline",
+     "queue": 4
+    },
+    {
+     "name": "ScQ-P18",
+     "qubits": 18,
+     "status": "Obsolete",
+     "queue": 1
+    },
+    {
+     "name": "Baiwang",
+     "qubits": 136,
+     "status": "Obsolete",
+     "queue": 30
+    },
+    {
+     "name": "ScQ-P102",
+     "qubits": 102,
+     "status": "Obsolete",
+     "queue": 21
+    },
+    {
+     "name": "ScQ-Sim10",
+     "qubits": 10,
+     "status": "Online",
+     "queue": 0
+    },
+    {
+     "name": "Miaofeng",
+     "qubits": 108,
+     "status": "Obsolete",
+     "queue": 266
+    },
+    {
+     "name": "Dongling",
+     "qubits": 105,
+     "status": "Offline",
+     "queue": 174
+    },
+    {
+     "name": "Haituo",
+     "qubits": 105,
+     "status": "Offline",
+     "queue": 462
+    },
+    {
+     "name": "Baihua",
+     "qubits": 119,
+     "status": "Online",
+     "queue": 475
+    },
+    {
+     "name": "Yunmeng",
+     "qubits": 156,
+     "status": "Obsolete",
+     "queue": 142
+    },
+    {
+     "name": "Xiang",
+     "qubits": 35,
+     "status": "Obsolete",
+     "queue": 8
+    },
+    {
+     "name": "ScQ-TEST",
+     "qubits": 3,
+     "status": "Offline",
+     "queue": 0
+    },
+    {
+     "name": "ScQ-P21",
+     "qubits": 11,
+     "status": "Offline",
+     "queue": 78
+    },
+    {
+     "name": "ScQ-Sim",
+     "qubits": 2,
+     "status": "Obsolete",
+     "queue": 0
+    },
+    {
+     "name": "ScQ-P3",
+     "qubits": 3,
+     "status": "Offline",
+     "queue": 2
+    },
+    {
+     "name": "ScQ-P5",
+     "qubits": 5,
+     "status": "Online",
+     "queue": 1792
+    }
+   ]
+  }
+ }
+}
