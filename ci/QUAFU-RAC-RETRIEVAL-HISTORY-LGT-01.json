@@ -1,0 +1,61 @@
+{
+  "audit": {
+    "completed_snapshots": 0,
+    "distinct_completed_counts_sha256": [],
+    "immutable_violation": false,
+    "rule": "Completed canonical counts must be byte-identical across retrieval; never select a preferred result",
+    "scoring_allowed": true,
+    "snapshots": 3,
+    "status": "NO_COMPLETED"
+  },
+  "experiment_id": "V147-QUAFU-RAC-PILOT-01",
+  "schema": "lgt.quafu.rac.retrieval-history.v1",
+  "snapshots": [
+    {
+      "counts": {
+        "00": 0,
+        "01": 0,
+        "10": 0,
+        "11": 0
+      },
+      "counts_sha256": "9175a3357068e95ed6097d6c2e3aa2692b074c4bbcf0c24f24320c0c7250bf60",
+      "receipt_path": "receipts/quafu-rac-41923004075.json",
+      "receipt_sha256": "20c42b3f962cfa06a5ff223136bff7ea964ae84fc95a502b77266d776f4b0cc6",
+      "retrieved_utc": "2026-11-04T22:11:45Z",
+      "run_id": 41923004075,
+      "task_id": "91C842B01A238734",
+      "task_status": "In Queue"
+    },
+    {
+      "counts": {
+        "00": 0,
+        "01": 0,
+        "10": 0,
+        "11": 0
+      },
+      "counts_sha256": "9175a3357068e95ed6097d6c2e3aa2692b074c4bbcf0c24f24320c0c7250bf60",
+      "receipt_path": "receipts/quafu-rac-41931682046.json",
+      "receipt_sha256": "2033239c3728c21a4bdd0a50b7a49e182a57192f3d416de01ef0c03f730fcd46",
+      "retrieved_utc": "2026-11-04T23:11:51Z",
+      "run_id": 41931682046,
+      "task_id": "91C842B01A238734",
+      "task_status": "In Queue"
+    },
+    {
+      "counts": {
+        "00": 0,
+        "01": 0,
+        "10": 0,
+        "11": 0
+      },
+      "counts_sha256": "9175a3357068e95ed6097d6c2e3aa2692b074c4bbcf0c24f24320c0c7250bf60",
+      "receipt_path": "receipts/quafu-rac-42155450189.json",
+      "receipt_sha256": "c4d2ec1e240b6d89f340edd1e2e4a51c87a08b4d6e04494926a9454f29322ae5",
+      "retrieved_utc": "2026-11-06T03:16:23Z",
+      "run_id": 42155450189,
+      "task_id": "91C842B01A238734",
+      "task_status": "In Queue"
+    }
+  ],
+  "task_id": "91C842B01A238734"
+}
