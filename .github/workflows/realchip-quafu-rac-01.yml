@@ -46,7 +46,7 @@ jobs:
           if [ ! -f "$RECEIPT_PATH" ]; then echo "no receipt file"; exit 0; fi
           git config user.name lgt-bot
           git config user.email lgt-bot@users.noreply.github.com
-          git add "$RECEIPT_PATH"
+          git add "$RECEIPT_PATH" ci/QUAFU-RAC-RETRIEVAL-HISTORY-LGT-01.json
           git commit -m "QUAFU-RAC receipt ${{ github.run_id }}"
           for i in 1 2 3 4 5; do
             if git push; then exit 0; fi
@@ -58,5 +58,7 @@ jobs:
         if: always()
         with:
           name: quafu-rac-${{ github.run_id }}
-          path: receipts/quafu-rac-${{ github.run_id }}.json
+          path: |
+            receipts/quafu-rac-${{ github.run_id }}.json
+            ci/QUAFU-RAC-RETRIEVAL-HISTORY-LGT-01.json
           if-no-files-found: ignore
