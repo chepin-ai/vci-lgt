@@ -15,7 +15,9 @@ def canonical_counts(counts):
         bits=''.join(str(key).split())
         if bits not in BITS:
             raise ValueError("pilot counts require two-bit keys")
-        n=int(value)
+        if type(value) is not int:
+            raise ValueError("counts must be integer JSON numbers; bool/float/string forbidden")
+        n=value
         if n<0:
             raise ValueError("negative count")
         clean[bits]=clean.get(bits,0)+n
@@ -55,11 +57,21 @@ def audit_history(history):
             raise ValueError("snapshot counts hash mismatch")
     completed=[s for s in snapshots if s.get("task_status")=="Completed"]
     hashes=sorted(set(s["counts_sha256"] for s in completed))
-    violation=len(hashes)>1
-    if not completed:
-        status="NO_COMPLETED"
-    elif violation:
+    counts_violation=len(hashes)>1
+    terminal=[s for s in snapshots if s.get('task_status') in {'Completed','Failed','Canceled'}]
+    regressions=[]
+    if terminal:
+        first=terminal[0]
+        for later in snapshots[snapshots.index(first)+1:]:
+            if later.get('task_status')!=first.get('task_status'):
+                regressions.append({'from_run_id':first['run_id'],'from_status':first['task_status'],
+                                    'to_run_id':later['run_id'],'to_status':later.get('task_status')})
+    terminal_violation=bool(regressions)
+    violation=counts_violation or terminal_violation
+    if violation:
         status="IMMUTABLE_VIOLATION"
+    elif not completed:
+        status="NO_COMPLETED"
     elif len(completed)==1:
         status="FIRST_COMPLETED"
     else:
@@ -70,8 +82,11 @@ def audit_history(history):
         "completed_snapshots":len(completed),
         "distinct_completed_counts_sha256":hashes,
         "immutable_violation":violation,
+        "counts_immutable_violation":counts_violation,
+        "terminal_status_violation":terminal_violation,
+        "terminal_status_regressions":regressions,
         "scoring_allowed":not violation,
-        "rule":"Completed canonical counts must be byte-identical across retrieval; never select a preferred result",
+        "rule":"Completed canonical counts and terminal status must be immutable across retrieval; never select a preferred result",
     }
 
 def append_snapshot(history,snapshot):
