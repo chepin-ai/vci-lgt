@@ -48,12 +48,14 @@ def bits2(s):
     return int(s[0]),int(s[1])  # PyQuafu big-endian: q0 is leftmost.
 
 def score_counts(counts,want):
-    total=sum(int(v) for v in counts.values())
+    for v in counts.values():
+        if type(v) is not int or v<0: raise ValueError('counts must be nonnegative integer JSON numbers')
+    total=sum(counts.values())
     if total<=0: return None,0,0
     hit=0
     for k,v in counts.items():
         q0,q1=bits2(k)
-        if (q0^q1)==want: hit+=int(v)
+        if (q0^q1)==want: hit+=v
     return hit/total,hit,total
 
 def local_gate():
@@ -105,12 +107,15 @@ def backend_snapshot(user):
 def completed_result(res):
     status=getattr(res,'task_status',None)
     out={'task_id':getattr(res,'taskid',None),'task_status':status,
-         'task_name':getattr(res,'taskname',None)}
+         'task_name':getattr(res,'taskname',None),
+         'status_known':status in {'In Queue','Running','Completed','Failed','Canceled'}}
     counts=getattr(res,'logicalq_res',None) or getattr(res,'counts',None) or {}
     out['counts']=counts
     return out
 
 def score_completed_result(out):
+    if not out.get('status_known'):
+        raise RuntimeError('unknown task status; evidence preserved and scoring forbidden')
     if out.get('task_status')=='Completed' and out.get('counts'):
         counts=out['counts']
         s,hit,total=score_counts(counts,P['expected_parity'])
