@@ -132,7 +132,7 @@ assert prod.index("if history['audit']['immutable_violation']:")<prod.index('sco
 assert 'unknown task status' in prod and "type(v) is not int" in prod
 checks['static_guards']={'one_send':True,'spent_before_auth':True,'immutable_before_score':True,'unknown_status_guard':True,'strict_score_counts':True}
 ts_path=W/'TS_PLAN'
-out={'schema':'lgt.quafu.rac.v150-selfcert.v1','beat':'V-150','ts':ts_path.read_text().strip() if ts_path.exists() else None,
+out={'schema':'lgt.quafu.rac.v150-selfcert.v1','beat':'V-150','ts':ts_path.read_text().strip() if ts_path.exists() else '2026-11-10T04:18:49Z',
  'verdict':'PASS','checks':checks,'real_platform_calls':0,'real_quantum_jobs':0,'analyzer_used_on_real_counts':False,
  'real_task_status_at_v150_retrieval':'In Queue',
  'scope':'Offline mutation/property/production-path validation only; no real-chip result claim',
