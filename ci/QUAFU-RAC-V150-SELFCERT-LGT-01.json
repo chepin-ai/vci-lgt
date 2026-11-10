@@ -1,0 +1,197 @@
+{
+  "analyzer_used_on_real_counts": false,
+  "beat": "V-150",
+  "checks": {
+    "canonical_equivalence_and_shots_mismatch": "PASS",
+    "negative_terminal_states": [
+      {
+        "receipt_ok": false,
+        "returncode": 0,
+        "score": null,
+        "status": "Failed"
+      },
+      {
+        "receipt_ok": false,
+        "returncode": 0,
+        "score": null,
+        "status": "Canceled"
+      }
+    ],
+    "production_malformed_counts": [
+      {
+        "error_type": "ValueError",
+        "returncode": 1,
+        "score": null,
+        "value_type": "float"
+      },
+      {
+        "error_type": "ValueError",
+        "returncode": 1,
+        "score": null,
+        "value_type": "bool"
+      },
+      {
+        "error_type": "ValueError",
+        "returncode": 1,
+        "score": null,
+        "value_type": "str"
+      },
+      {
+        "error_type": "ValueError",
+        "returncode": 1,
+        "score": null,
+        "value_type": "int"
+      },
+      {
+        "error_type": "ValueError",
+        "returncode": 1,
+        "score": null,
+        "value_type": "NoneType"
+      }
+    ],
+    "production_terminal_regression": {
+      "audit": {
+        "completed_snapshots": 1,
+        "counts_immutable_violation": false,
+        "distinct_completed_counts_sha256": [
+          "065fbaa66e49220eb7d9221d91e95d18265c0bbdd76d13712ae5c20143897c09"
+        ],
+        "immutable_violation": true,
+        "rule": "Completed canonical counts and terminal status must be immutable across retrieval; never select a preferred result",
+        "scoring_allowed": false,
+        "snapshots": 6,
+        "status": "IMMUTABLE_VIOLATION",
+        "terminal_status_regressions": [
+          {
+            "from_run_id": 9201,
+            "from_status": "Completed",
+            "to_run_id": 9202,
+            "to_status": "In Queue"
+          }
+        ],
+        "terminal_status_violation": true
+      },
+      "returncode": 1,
+      "score": null
+    },
+    "production_v149_regression": [
+      {
+        "S": null,
+        "analysis_present": false,
+        "audit": "NO_COMPLETED",
+        "returncode": 0,
+        "rid": 9001
+      },
+      {
+        "S": 1.0,
+        "analysis_present": true,
+        "audit": "FIRST_COMPLETED",
+        "returncode": 0,
+        "rid": 9002
+      },
+      {
+        "S": 1.0,
+        "analysis_present": true,
+        "audit": "IMMUTABLE_OK",
+        "returncode": 0,
+        "rid": 9003
+      },
+      {
+        "S": null,
+        "analysis_present": false,
+        "audit": "IMMUTABLE_VIOLATION",
+        "returncode": 1,
+        "rid": 9004
+      }
+    ],
+    "send_called": false,
+    "static_guards": {
+      "immutable_before_score": true,
+      "one_send": true,
+      "spent_before_auth": true,
+      "strict_score_counts": true,
+      "unknown_status_guard": true
+    },
+    "statistical_property_test": {
+      "independent_reference": "SciPy binomtest Wilson + chi2.sf + Fraction TV",
+      "max_chi2_p_abs_error": 4.163336342344337e-15,
+      "max_exact_tv_abs_error": 1.1102230246251565e-16,
+      "max_wilson_abs_error": 2.220446049250313e-16,
+      "random_cases": 512,
+      "seed": 150
+    },
+    "strict_count_typing": [
+      {
+        "implementation": "immutable",
+        "rejected": true,
+        "value": "1.5",
+        "value_type": "float"
+      },
+      {
+        "implementation": "analyzer",
+        "rejected": true,
+        "value": "1.5",
+        "value_type": "float"
+      },
+      {
+        "implementation": "immutable",
+        "rejected": true,
+        "value": "True",
+        "value_type": "bool"
+      },
+      {
+        "implementation": "analyzer",
+        "rejected": true,
+        "value": "True",
+        "value_type": "bool"
+      },
+      {
+        "implementation": "immutable",
+        "rejected": true,
+        "value": "2",
+        "value_type": "str"
+      },
+      {
+        "implementation": "analyzer",
+        "rejected": true,
+        "value": "2",
+        "value_type": "str"
+      },
+      {
+        "implementation": "immutable",
+        "rejected": true,
+        "value": "-1",
+        "value_type": "int"
+      },
+      {
+        "implementation": "analyzer",
+        "rejected": true,
+        "value": "-1",
+        "value_type": "int"
+      },
+      {
+        "implementation": "immutable",
+        "rejected": true,
+        "value": "None",
+        "value_type": "NoneType"
+      },
+      {
+        "implementation": "analyzer",
+        "rejected": true,
+        "value": "None",
+        "value_type": "NoneType"
+      }
+    ],
+    "terminal_regression_mutations": "PASS",
+    "unknown_status_fail_closed": true,
+    "v149_module_regression": "PASS"
+  },
+  "real_platform_calls": 0,
+  "real_quantum_jobs": 0,
+  "real_task_status_at_v150_retrieval": "In Queue",
+  "schema": "lgt.quafu.rac.v150-selfcert.v1",
+  "scope": "Offline mutation/property/production-path validation only; no real-chip result claim",
+  "ts": "2026-11-10T04:18:49Z",
+  "verdict": "PASS",
+  "weakening": "Malformed, terminal-regression and unknown-status paths are synthetic known-answer tests; the real task remains In Queue"
+}
