@@ -1,12 +1,15 @@
 {
   "audit": {
     "completed_snapshots": 0,
+    "counts_immutable_violation": false,
     "distinct_completed_counts_sha256": [],
     "immutable_violation": false,
-    "rule": "Completed canonical counts must be byte-identical across retrieval; never select a preferred result",
+    "rule": "Completed canonical counts and terminal status must be immutable across retrieval; never select a preferred result",
     "scoring_allowed": true,
     "snapshots": 4,
-    "status": "NO_COMPLETED"
+    "status": "NO_COMPLETED",
+    "terminal_status_regressions": [],
+    "terminal_status_violation": false
   },
   "experiment_id": "V147-QUAFU-RAC-PILOT-01",
   "schema": "lgt.quafu.rac.retrieval-history.v1",
