@@ -5,7 +5,7 @@
     "immutable_violation": false,
     "rule": "Completed canonical counts must be byte-identical across retrieval; never select a preferred result",
     "scoring_allowed": true,
-    "snapshots": 3,
+    "snapshots": 4,
     "status": "NO_COMPLETED"
   },
   "experiment_id": "V147-QUAFU-RAC-PILOT-01",
@@ -53,6 +53,21 @@
       "receipt_sha256": "c4d2ec1e240b6d89f340edd1e2e4a51c87a08b4d6e04494926a9454f29322ae5",
       "retrieved_utc": "2026-11-06T03:16:23Z",
       "run_id": 42155450189,
+      "task_id": "91C842B01A238734",
+      "task_status": "In Queue"
+    },
+    {
+      "counts": {
+        "00": 0,
+        "01": 0,
+        "10": 0,
+        "11": 0
+      },
+      "counts_sha256": "9175a3357068e95ed6097d6c2e3aa2692b074c4bbcf0c24f24320c0c7250bf60",
+      "receipt_path": "receipts/quafu-rac-42755343750.json",
+      "receipt_sha256": "UNSEALED_CURRENT_RECEIPT",
+      "retrieved_utc": "2026-11-10T04:22:08Z",
+      "run_id": 42755343750,
       "task_id": "91C842B01A238734",
       "task_status": "In Queue"
     }
