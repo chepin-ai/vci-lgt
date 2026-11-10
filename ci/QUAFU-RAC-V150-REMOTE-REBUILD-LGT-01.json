@@ -1,0 +1,137 @@
+{
+  "all_remote_sources_match_local": true,
+  "beat": "V-150",
+  "files": [
+    {
+      "bytes": 2004,
+      "local_match": true,
+      "path": "ci/QUAFU-RAC-PREFLIGHT-LGT-01.json",
+      "sha256": "2164bb5172df68b01e4ffcd707dc8a7e87716ae2cad179eb20965a70d7869a31"
+    },
+    {
+      "bytes": 2551,
+      "local_match": true,
+      "path": "ci/QUAFU-RAC-RETRIEVAL-HISTORY-LGT-01.json",
+      "sha256": "7c14425bf90be99d879be4156e8de67936c35970563d835f30c6f7267c90e279"
+    },
+    {
+      "bytes": 2276,
+      "local_match": true,
+      "path": "ci/quafu_rac_analysis.py",
+      "sha256": "2a988d5aece4eb84a27b1a4ec21145d131e72789a27f1b238b9ad17becd81db5"
+    },
+    {
+      "bytes": 4192,
+      "local_match": true,
+      "path": "ci/quafu_rac_immutable.py",
+      "sha256": "23585c42be8759f85a840508e36a1c9a006c2b3c6a25ad81ef8bab541425d13c"
+    },
+    {
+      "bytes": 10683,
+      "local_match": true,
+      "path": "ci/realchip_quafu_rac.py",
+      "sha256": "d75ea5789c0a6fb5d4c28aacf67472cbce2d16340574d697980b27c898b333ae"
+    },
+    {
+      "bytes": 10863,
+      "local_match": true,
+      "path": "ci/quafu_rac_v150_selfcert.py",
+      "sha256": "a7ae8ea895a3887c973dcd67c263458a4ae1a3e707be3744756219dd62646b25"
+    },
+    {
+      "bytes": 13306,
+      "local_match": true,
+      "path": "ci/quafu_rac_v150_independent_rebuild.py",
+      "sha256": "0156692d24b0bb01565a603e1d6fce095eb0a47fd1c50d448a3a1cde14873497"
+    },
+    {
+      "bytes": 2166,
+      "local_match": true,
+      "path": ".github/workflows/realchip-quafu-rac-01.yml",
+      "sha256": "3664f008747141784a2b5698b61ff4a2a502a59521b4edd31c3e5cec79efbf20"
+    },
+    {
+      "bytes": 5119,
+      "local_match": true,
+      "path": "ci/QUAFU-RAC-V150-SELFCERT-LGT-01.json",
+      "sha256": "a98f8bb520d883a7d9e143014f7fac40a18762bba83e68625051e0d39cdd9b61"
+    },
+    {
+      "bytes": 7145,
+      "local_match": true,
+      "path": "ci/QUAFU-RAC-V150-INDEPENDENT-REBUILD-LGT-01.json",
+      "sha256": "ce7f36633c52eed3e562f86b9554d738856d1b772694e88537f4a821282ed5df"
+    },
+    {
+      "bytes": 11022,
+      "local_match": false,
+      "path": "receipts/quafu-rac-41922417262.json",
+      "sha256": "6670fd02b17f4294d264ed7d71f3ab7a721597b17e3c3550ef0129bbf93c6402"
+    },
+    {
+      "bytes": 11089,
+      "local_match": false,
+      "path": "receipts/quafu-rac-42160979350.json",
+      "sha256": "79a0bf3990763bb5c9890880091012172e406a30bb75aa6126171383c61f11c0"
+    },
+    {
+      "bytes": 11549,
+      "local_match": false,
+      "path": "receipts/quafu-rac-41922704802.json",
+      "sha256": "c61cd980032f953a25ddc125c76f585cf368b227e3ff3015caab92360df34aa1"
+    },
+    {
+      "bytes": 616,
+      "local_match": false,
+      "path": "receipts/quafu-rac-41923004075.json",
+      "sha256": "20c42b3f962cfa06a5ff223136bff7ea964ae84fc95a502b77266d776f4b0cc6"
+    },
+    {
+      "bytes": 616,
+      "local_match": false,
+      "path": "receipts/quafu-rac-41931682046.json",
+      "sha256": "2033239c3728c21a4bdd0a50b7a49e182a57192f3d416de01ef0c03f730fcd46"
+    },
+    {
+      "bytes": 616,
+      "local_match": false,
+      "path": "receipts/quafu-rac-42155450189.json",
+      "sha256": "c4d2ec1e240b6d89f340edd1e2e4a51c87a08b4d6e04494926a9454f29322ae5"
+    },
+    {
+      "bytes": 1381,
+      "local_match": false,
+      "path": "receipts/quafu-rac-42755343750.json",
+      "sha256": "91b0c3d42d78045f9be5d3091367f4afbc738794f025e082880d59e1c8abf5c1"
+    }
+  ],
+  "independent_evidence": {
+    "byte_equal_to_published": true,
+    "published_sha256": "ce7f36633c52eed3e562f86b9554d738856d1b772694e88537f4a821282ed5df",
+    "sha256": "ce7f36633c52eed3e562f86b9554d738856d1b772694e88537f4a821282ed5df"
+  },
+  "independent_rebuild": {
+    "returncode": 0,
+    "stderr_tail": "",
+    "stdout": "{\n  \"verdict\": \"PASS\",\n  \"receipts\": 7,\n  \"snapshots\": 4,\n  \"audit\": \"NO_COMPLETED\",\n  \"ideal_probabilities\": {\n    \"00\": 0.0,\n    \"01\": 0.4999999999999998,\n    \"10\": 0.4999999999999998,\n    \"11\": 0.0\n  },\n  \"new_quantum_jobs_confirmed_total\": 1,\n  \"latest_task_status\": \"In Queue\",\n  \"platform_calls\": 0\n}\n"
+  },
+  "real_platform_calls": 0,
+  "real_quantum_jobs": 0,
+  "schema": "lgt.quafu.rac.v150-remote-rebuild-verification.v1",
+  "selfcert": {
+    "returncode": 0,
+    "stderr_tail": "",
+    "stdout": "{\n  \"verdict\": \"PASS\",\n  \"random_cases\": 512,\n  \"max_wilson_abs_error\": 2.220446049250313e-16,\n  \"max_chi2_p_abs_error\": 4.163336342344337e-15,\n  \"max_exact_tv_abs_error\": 1.1102230246251565e-16,\n  \"v149_returncodes\": [\n    0,\n    0,\n    0,\n    1\n  ],\n  \"strict_count_cases\": 10,\n  \"malformed_production_cases\": 5,\n  \"real_platform_calls\": 0,\n  \"real_quantum_jobs\": 0\n}\n"
+  },
+  "selfcert_evidence": {
+    "byte_equal_to_published": true,
+    "published_sha256": "a98f8bb520d883a7d9e143014f7fac40a18762bba83e68625051e0d39cdd9b61",
+    "sha256": "a98f8bb520d883a7d9e143014f7fac40a18762bba83e68625051e0d39cdd9b61"
+  },
+  "source": "chepin-ai/vci-lgt main clean-room API readback",
+  "source_head_after": "c9cd5d4363e6a0265318b77f2d41dfbdc215dead",
+  "source_head_before": "c9cd5d4363e6a0265318b77f2d41dfbdc215dead",
+  "source_head_stable": true,
+  "ts": "2026-11-10T04:18:49Z",
+  "verdict": "PASS"
+}
