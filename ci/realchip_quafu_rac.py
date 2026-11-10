@@ -116,12 +116,18 @@ def completed_result(res):
 def score_completed_result(out):
     if not out.get('status_known'):
         raise RuntimeError('unknown task status; evidence preserved and scoring forbidden')
-    if out.get('task_status')=='Completed' and out.get('counts'):
+    if out.get('task_status')=='Completed':
         counts=out['counts']
+        if not counts:
+            raise RuntimeError('Completed returned empty counts; evidence preserved and success forbidden')
         s,hit,total=score_counts(counts,P['expected_parity'])
+        if s is None or total<=0:
+            raise RuntimeError('Completed returned zero shots; evidence preserved and success forbidden')
+        analysis=analyze_pilot_counts(counts)
+        if analysis.get('status')!='OK' or analysis.get('shots_returned',0)<=0:
+            raise RuntimeError('Completed analysis is not OK; evidence preserved and success forbidden')
         out.update({'S_real_pilot':s,'hits':hit,'shots_returned':total,'shots_preregistered':R['shots'],
                     'scope':'single RAC cell only; not eight-cell S_real'})
-        analysis=analyze_pilot_counts(counts)
         assert abs(s-analysis['S_real_pilot'])<1e-15
         out['analysis']=analysis
         receipt['S_real_pilot']=s
