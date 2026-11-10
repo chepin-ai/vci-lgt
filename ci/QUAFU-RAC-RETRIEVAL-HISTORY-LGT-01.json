@@ -6,7 +6,7 @@
     "immutable_violation": false,
     "rule": "Completed canonical counts and terminal status must be immutable across retrieval; never select a preferred result",
     "scoring_allowed": true,
-    "snapshots": 4,
+    "snapshots": 5,
     "status": "NO_COMPLETED",
     "terminal_status_regressions": [],
     "terminal_status_violation": false
@@ -71,6 +71,21 @@
       "receipt_sha256": "UNSEALED_CURRENT_RECEIPT",
       "retrieved_utc": "2026-11-10T04:22:08Z",
       "run_id": 42755343750,
+      "task_id": "91C842B01A238734",
+      "task_status": "In Queue"
+    },
+    {
+      "counts": {
+        "00": 0,
+        "01": 0,
+        "10": 0,
+        "11": 0
+      },
+      "counts_sha256": "9175a3357068e95ed6097d6c2e3aa2692b074c4bbcf0c24f24320c0c7250bf60",
+      "receipt_path": "receipts/quafu-rac-42761142348.json",
+      "receipt_sha256": "UNSEALED_CURRENT_RECEIPT",
+      "retrieved_utc": "2026-11-10T05:17:32Z",
+      "run_id": 42761142348,
       "task_id": "91C842B01A238734",
       "task_status": "In Queue"
     }

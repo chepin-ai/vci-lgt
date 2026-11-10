@@ -1,0 +1,47 @@
+{
+  "S_real_pilot": null,
+  "experiment_id": "V147-QUAFU-RAC-PILOT-01",
+  "finished_utc": "2026-11-10T05:17:32Z",
+  "immutable_audit": {
+    "completed_snapshots": 0,
+    "counts_immutable_violation": false,
+    "distinct_completed_counts_sha256": [],
+    "immutable_violation": false,
+    "rule": "Completed canonical counts and terminal status must be immutable across retrieval; never select a preferred result",
+    "scoring_allowed": true,
+    "snapshots": 5,
+    "status": "NO_COMPLETED",
+    "terminal_status_regressions": [],
+    "terminal_status_violation": false
+  },
+  "mode": "RETRIEVE",
+  "new_quantum_jobs_confirmed": 0,
+  "new_quantum_jobs_uncertain": false,
+  "ok": true,
+  "prereg_sha256": "563445cc8b420950a42f2aba9e027d367d6568f3888091ded87a7abb9fa10f40",
+  "retrieval": {
+    "counts": {},
+    "counts_sha256": "9175a3357068e95ed6097d6c2e3aa2692b074c4bbcf0c24f24320c0c7250bf60",
+    "immutable_audit": {
+      "completed_snapshots": 0,
+      "counts_immutable_violation": false,
+      "distinct_completed_counts_sha256": [],
+      "immutable_violation": false,
+      "rule": "Completed canonical counts and terminal status must be immutable across retrieval; never select a preferred result",
+      "scoring_allowed": true,
+      "snapshots": 5,
+      "status": "NO_COMPLETED",
+      "terminal_status_regressions": [],
+      "terminal_status_violation": false
+    },
+    "status_known": true,
+    "task_id": "91C842B01A238734",
+    "task_name": "LGT-V147-RAC11X",
+    "task_status": "In Queue"
+  },
+  "schema": "lgt.quafu.rac.receipt.v1",
+  "sdk": "pyquafu==0.4.5",
+  "send_attempts": 0,
+  "started_utc": "2026-11-10T05:17:29Z",
+  "task_id": "91C842B01A238734"
+}
