@@ -70,7 +70,7 @@ with tempfile.TemporaryDirectory(prefix='lgt-v151-selfcert-') as td:
         root=base/name; (root/'ci').mkdir(parents=True); (root/'receipts').mkdir(); (root/'quafu').mkdir()
         for fn in ['QUAFU-RAC-PREFLIGHT-LGT-01.json','quafu_rac_analysis.py','quafu_rac_immutable.py','realchip_quafu_rac.py']:
             shutil.copy(W/fn,root/'ci'/fn)
-        shutil.copy(W/'QUAFU-RAC-RETRIEVAL-HISTORY-LGT-01.json',root/'ci'/'QUAFU-RAC-RETRIEVAL-HISTORY-LGT-01.json')
+        (root/'ci'/'QUAFU-RAC-RETRIEVAL-HISTORY-LGT-01.json').write_text(json.dumps({'schema':im.SCHEMA,'task_id':'91C842B01A238734','snapshots':[]},ensure_ascii=False,indent=2,sort_keys=True)+'\n')
         (root/'quafu'/'__init__.py').write_text('''import json, os\nfrom types import SimpleNamespace\nclass QuantumCircuit:\n    pass\ndef simulate(*a,**k):\n    raise RuntimeError("offline selfcert: simulate forbidden")\nclass User:\n    def __init__(self,key): self.authenticated=bool(key)\nclass Task:\n    def __init__(self,user): assert user.authenticated\n    def retrieve(self,tid):\n        counts=json.loads(os.environ.get("STUB_COUNTS","{}"))\n        return SimpleNamespace(taskid=str(tid),task_status=os.environ["STUB_STATUS"],taskname="SELFTEST",logicalq_res=counts,counts=counts)\n    def send(self,*a,**k):\n        open(os.environ["STUB_SEND_MARKER"],"w").write("SEND_FORBIDDEN")\n        raise RuntimeError("offline selfcert: send forbidden")\n''')
         markers.append(root/'SEND_CALLED')
         return root
@@ -134,6 +134,7 @@ with tempfile.TemporaryDirectory(prefix='lgt-v151-selfcert-') as td:
     checks['negative_terminal_states']=negatives
     assert all(not m.exists() for m in markers)
     checks['send_called']=False
+checks['synthetic_history_isolation']={'initial_snapshots':0,'real_history_file_required':False,'audit_counts_independent_of_real_history':True}
 
 prod=(W/'realchip_quafu_rac.py').read_text(); wf_path=W/'realchip-quafu-rac-01.yml'
 if not wf_path.exists(): wf_path=W.parent/'.github'/'workflows'/'realchip-quafu-rac-01.yml'

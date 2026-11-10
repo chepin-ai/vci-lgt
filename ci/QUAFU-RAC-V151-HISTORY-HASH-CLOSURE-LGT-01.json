@@ -1,0 +1,19 @@
+{
+  "after_sha256": "576fcf5a78767f864dfd47b4aefd49e033632972b113e2681b174d025711ddad",
+  "audit_unchanged": true,
+  "beat": "V-151",
+  "before_sha256": "a39586825103a5856ca01fbdc0508550c70e0e4f0e32e324610f958cb3170975",
+  "closures": [
+    {
+      "after": "91b0c3d42d78045f9be5d3091367f4afbc738794f025e082880d59e1c8abf5c1",
+      "before": "UNSEALED_CURRENT_RECEIPT",
+      "receipt_path": "receipts/quafu-rac-42755343750.json",
+      "run_id": 42755343750,
+      "source": "independent raw receipt byte readback"
+    }
+  ],
+  "latest_sentinel_retained_run_id": 42761142348,
+  "schema": "lgt.quafu.rac.v151-history-hash-closure.v1",
+  "snapshots": 5,
+  "ts": "2026-11-10T05:12:34Z"
+}

@@ -81,7 +81,7 @@
         "immutable_violation": true,
         "rule": "Completed canonical counts and terminal status must be immutable across retrieval; never select a preferred result",
         "scoring_allowed": false,
-        "snapshots": 6,
+        "snapshots": 2,
         "status": "IMMUTABLE_VIOLATION",
         "terminal_status_regressions": [
           {
@@ -205,6 +205,11 @@
         "value_type": "NoneType"
       }
     ],
+    "synthetic_history_isolation": {
+      "audit_counts_independent_of_real_history": true,
+      "initial_snapshots": 0,
+      "real_history_file_required": false
+    },
     "terminal_regression_mutations": "PASS",
     "unknown_status_fail_closed": true,
     "v149_module_regression": "PASS"

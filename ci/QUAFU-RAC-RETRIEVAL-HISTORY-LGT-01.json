@@ -68,7 +68,7 @@
       },
       "counts_sha256": "9175a3357068e95ed6097d6c2e3aa2692b074c4bbcf0c24f24320c0c7250bf60",
       "receipt_path": "receipts/quafu-rac-42755343750.json",
-      "receipt_sha256": "UNSEALED_CURRENT_RECEIPT",
+      "receipt_sha256": "91b0c3d42d78045f9be5d3091367f4afbc738794f025e082880d59e1c8abf5c1",
       "retrieved_utc": "2026-11-10T04:22:08Z",
       "run_id": 42755343750,
       "task_id": "91C842B01A238734",

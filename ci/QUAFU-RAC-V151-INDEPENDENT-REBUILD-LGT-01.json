@@ -1,0 +1,236 @@
+{
+  "beat": "V-151",
+  "fire": {
+    "new_quantum_jobs_confirmed": 1,
+    "qasm_sha256": "24aea2fed6cea4bb6aa1532278b7d33984640de8055acdca29462ace0c0921c6",
+    "run_id": 41922704802,
+    "send_attempts": 1,
+    "task_id": "91C842B01A238734"
+  },
+  "history_rebuild": {
+    "audit": {
+      "completed_snapshots": 0,
+      "counts_immutable_violation": false,
+      "distinct_completed_counts_sha256": [],
+      "immutable_violation": false,
+      "rule": "Completed canonical counts and terminal status must be immutable across retrieval; never select a preferred result",
+      "scoring_allowed": true,
+      "snapshots": 5,
+      "status": "NO_COMPLETED",
+      "terminal_status_regressions": [],
+      "terminal_status_violation": false
+    },
+    "exact_audit_equality": true,
+    "exact_snapshot_equality": true,
+    "receipt_hash_checks": [
+      {
+        "actual_sha256": "20c42b3f962cfa06a5ff223136bff7ea964ae84fc95a502b77266d776f4b0cc6",
+        "closure": "direct raw-byte SHA-256 equality",
+        "path": "receipts/quafu-rac-41923004075.json",
+        "run_id": 41923004075,
+        "stored_field": "20c42b3f962cfa06a5ff223136bff7ea964ae84fc95a502b77266d776f4b0cc6"
+      },
+      {
+        "actual_sha256": "2033239c3728c21a4bdd0a50b7a49e182a57192f3d416de01ef0c03f730fcd46",
+        "closure": "direct raw-byte SHA-256 equality",
+        "path": "receipts/quafu-rac-41931682046.json",
+        "run_id": 41931682046,
+        "stored_field": "2033239c3728c21a4bdd0a50b7a49e182a57192f3d416de01ef0c03f730fcd46"
+      },
+      {
+        "actual_sha256": "c4d2ec1e240b6d89f340edd1e2e4a51c87a08b4d6e04494926a9454f29322ae5",
+        "closure": "direct raw-byte SHA-256 equality",
+        "path": "receipts/quafu-rac-42155450189.json",
+        "run_id": 42155450189,
+        "stored_field": "c4d2ec1e240b6d89f340edd1e2e4a51c87a08b4d6e04494926a9454f29322ae5"
+      },
+      {
+        "actual_sha256": "91b0c3d42d78045f9be5d3091367f4afbc738794f025e082880d59e1c8abf5c1",
+        "closure": "direct raw-byte SHA-256 equality",
+        "path": "receipts/quafu-rac-42755343750.json",
+        "run_id": 42755343750,
+        "stored_field": "91b0c3d42d78045f9be5d3091367f4afbc738794f025e082880d59e1c8abf5c1"
+      },
+      {
+        "actual_sha256": "9e9d2b1b740442f3941c3c8ff1cc214fc1644fea880927bb58abb986c86a3358",
+        "closure": "sentinel resolved by independent readback receipt hash",
+        "path": "receipts/quafu-rac-42761142348.json",
+        "run_id": 42761142348,
+        "stored_field": "UNSEALED_CURRENT_RECEIPT"
+      }
+    ],
+    "snapshots": [
+      {
+        "counts": {
+          "00": 0,
+          "01": 0,
+          "10": 0,
+          "11": 0
+        },
+        "counts_sha256": "9175a3357068e95ed6097d6c2e3aa2692b074c4bbcf0c24f24320c0c7250bf60",
+        "receipt_path": "receipts/quafu-rac-41923004075.json",
+        "receipt_sha256": "20c42b3f962cfa06a5ff223136bff7ea964ae84fc95a502b77266d776f4b0cc6",
+        "retrieved_utc": "2026-11-04T22:11:45Z",
+        "run_id": 41923004075,
+        "task_id": "91C842B01A238734",
+        "task_status": "In Queue"
+      },
+      {
+        "counts": {
+          "00": 0,
+          "01": 0,
+          "10": 0,
+          "11": 0
+        },
+        "counts_sha256": "9175a3357068e95ed6097d6c2e3aa2692b074c4bbcf0c24f24320c0c7250bf60",
+        "receipt_path": "receipts/quafu-rac-41931682046.json",
+        "receipt_sha256": "2033239c3728c21a4bdd0a50b7a49e182a57192f3d416de01ef0c03f730fcd46",
+        "retrieved_utc": "2026-11-04T23:11:51Z",
+        "run_id": 41931682046,
+        "task_id": "91C842B01A238734",
+        "task_status": "In Queue"
+      },
+      {
+        "counts": {
+          "00": 0,
+          "01": 0,
+          "10": 0,
+          "11": 0
+        },
+        "counts_sha256": "9175a3357068e95ed6097d6c2e3aa2692b074c4bbcf0c24f24320c0c7250bf60",
+        "receipt_path": "receipts/quafu-rac-42155450189.json",
+        "receipt_sha256": "c4d2ec1e240b6d89f340edd1e2e4a51c87a08b4d6e04494926a9454f29322ae5",
+        "retrieved_utc": "2026-11-06T03:16:23Z",
+        "run_id": 42155450189,
+        "task_id": "91C842B01A238734",
+        "task_status": "In Queue"
+      },
+      {
+        "counts": {
+          "00": 0,
+          "01": 0,
+          "10": 0,
+          "11": 0
+        },
+        "counts_sha256": "9175a3357068e95ed6097d6c2e3aa2692b074c4bbcf0c24f24320c0c7250bf60",
+        "receipt_path": "receipts/quafu-rac-42755343750.json",
+        "receipt_sha256": "91b0c3d42d78045f9be5d3091367f4afbc738794f025e082880d59e1c8abf5c1",
+        "retrieved_utc": "2026-11-10T04:22:08Z",
+        "run_id": 42755343750,
+        "task_id": "91C842B01A238734",
+        "task_status": "In Queue"
+      },
+      {
+        "counts": {
+          "00": 0,
+          "01": 0,
+          "10": 0,
+          "11": 0
+        },
+        "counts_sha256": "9175a3357068e95ed6097d6c2e3aa2692b074c4bbcf0c24f24320c0c7250bf60",
+        "receipt_path": "receipts/quafu-rac-42761142348.json",
+        "receipt_sha256": "UNSEALED_CURRENT_RECEIPT",
+        "retrieved_utc": "2026-11-10T05:17:32Z",
+        "run_id": 42761142348,
+        "task_id": "91C842B01A238734",
+        "task_status": "In Queue"
+      }
+    ],
+    "stored_history_sha256": "576fcf5a78767f864dfd47b4aefd49e033632972b113e2681b174d025711ddad"
+  },
+  "method": "raw-receipt rebuild; no production analyzer or immutable-module import",
+  "prereg": {
+    "all_receipts_match": true,
+    "canonical_sha256": "563445cc8b420950a42f2aba9e027d367d6568f3888091ded87a7abb9fa10f40"
+  },
+  "real_job_ledger": {
+    "S_real_eight_cell": null,
+    "S_real_pilot": null,
+    "backend": "ScQ-P5",
+    "fire_runs": [
+      41922704802
+    ],
+    "fire_send_attempts": 1,
+    "latest_observed_task_status": "In Queue",
+    "new_quantum_jobs_confirmed": 1,
+    "new_quantum_jobs_uncertain_any": false,
+    "preregistered_shots": 1024,
+    "real_chip_qrand_executed": false,
+    "real_chip_task_ids": [
+      "91C842B01A238734"
+    ],
+    "retrieve_runs": [
+      41923004075,
+      41931682046,
+      42155450189,
+      42755343750,
+      42761142348
+    ],
+    "retrieve_send_attempts": 0,
+    "sim_runs": [
+      41922417262,
+      42160979350
+    ],
+    "sim_send_attempts": 0
+  },
+  "real_platform_calls_by_this_rebuild": 0,
+  "real_quantum_jobs_by_this_rebuild": 0,
+  "schema": "lgt.quafu.rac.v151-independent-rebuild.v1",
+  "source_receipts": [
+    {
+      "mode": "SIM",
+      "run_id": 41922417262,
+      "sha256": "6670fd02b17f4294d264ed7d71f3ab7a721597b17e3c3550ef0129bbf93c6402"
+    },
+    {
+      "mode": "SIM",
+      "run_id": 42160979350,
+      "sha256": "79a0bf3990763bb5c9890880091012172e406a30bb75aa6126171383c61f11c0"
+    },
+    {
+      "mode": "FIRE",
+      "run_id": 41922704802,
+      "sha256": "c61cd980032f953a25ddc125c76f585cf368b227e3ff3015caab92360df34aa1"
+    },
+    {
+      "mode": "RETRIEVE",
+      "run_id": 41923004075,
+      "sha256": "20c42b3f962cfa06a5ff223136bff7ea964ae84fc95a502b77266d776f4b0cc6"
+    },
+    {
+      "mode": "RETRIEVE",
+      "run_id": 41931682046,
+      "sha256": "2033239c3728c21a4bdd0a50b7a49e182a57192f3d416de01ef0c03f730fcd46"
+    },
+    {
+      "mode": "RETRIEVE",
+      "run_id": 42155450189,
+      "sha256": "c4d2ec1e240b6d89f340edd1e2e4a51c87a08b4d6e04494926a9454f29322ae5"
+    },
+    {
+      "mode": "RETRIEVE",
+      "run_id": 42755343750,
+      "sha256": "91b0c3d42d78045f9be5d3091367f4afbc738794f025e082880d59e1c8abf5c1"
+    },
+    {
+      "mode": "RETRIEVE",
+      "run_id": 42761142348,
+      "sha256": "9e9d2b1b740442f3941c3c8ff1cc214fc1644fea880927bb58abb986c86a3358"
+    }
+  ],
+  "statevector_reconstruction": {
+    "bit_order": "q0 leftmost",
+    "ideal_measurement_probabilities": {
+      "00": 0.0,
+      "01": 0.4999999999999998,
+      "10": 0.4999999999999998,
+      "11": 0.0
+    },
+    "odd_parity_probability": 0.9999999999999996,
+    "pre_basis_fidelity_to_psi_minus": 0.9999999999999996,
+    "xx_expectation": -0.9999999999999998
+  },
+  "ts": "2026-11-10T05:12:34Z",
+  "verdict": "PASS",
+  "weakening": "All five real retrievals remain In Queue with empty counts. No real counts, S_real_pilot, eight-cell S_real or real-chip QRAND result exists. Ideal state-vector checks are not hardware certification."
+}
