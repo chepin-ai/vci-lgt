@@ -9,7 +9,9 @@ def analyze_pilot_counts(counts):
     for key,value in counts.items():
         bits=''.join(str(key).split())
         if bits not in {'00','01','10','11'}: raise ValueError('pilot counts require two-bit keys')
-        n=int(value)
+        if type(value) is not int:
+            raise ValueError('counts must be integer JSON numbers; bool/float/string forbidden')
+        n=value
         if n<0: raise ValueError('negative count')
         clean[bits]=clean.get(bits,0)+n
     canonical={k:clean.get(k,0) for k in ['00','01','10','11']}
