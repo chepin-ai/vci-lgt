@@ -1,0 +1,41 @@
+{
+  "classification": "CLASSIFY: L1",
+  "S_real_pilot": null,
+  "beat": "V-151U",
+  "chain_233_modified": false,
+  "classify": "L1",
+  "confirmed_defects_closed_offline": 13,
+  "current_real_task_status": "NOT_RETRIEVED_IN_V151U",
+  "evidence_sha256": {
+    "independent": "984a821fd98ee876263e8a2b58357662183da18c07557c39d543aaa3179bdf03",
+    "remote_rebuild": "7757b8dbc79446dcfb320fb0cd1156ab9a3075882064d12cc18fbb7b2509a532",
+    "selfcert": "44bab794b89b676d1c8832e9600069ead01c45de70006a2432bcd137dd48f594"
+  },
+  "execution_files_byte_equal": true,
+  "github_hosted_workflow_tested": false,
+  "independent_statistical_cases": 1031,
+  "last_real_observation": {
+    "counts": {},
+    "finished_utc": "2026-11-10T05:17:32Z",
+    "status": "In Queue",
+    "task_id": "91C842B01A238734"
+  },
+  "new_FIRE": 0,
+  "new_RETRIEVE": 0,
+  "offline_verdict": "PASS",
+  "real_platform_calls": 0,
+  "real_quantum_jobs": 0,
+  "remote_cleanroom": {
+    "generated_evidence_byte_equal": true,
+    "returncodes": {
+      "independent": 0,
+      "red": 0,
+      "selfcert": 0
+    }
+  },
+  "schema": "lgt.quafu.rac.v151u-public-l1.v1",
+  "selfcert_groups": 20,
+  "source_ref": "34ee8923bd4d46e0d3e6f14df8effe07b245f1c4",
+  "ts": "2026-11-10T13:17:46Z",
+  "workflow_dispatch_by_V151U": 0
+}
