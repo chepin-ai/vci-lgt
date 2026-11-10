@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""V147 Quafu RAC pilot: one-send pilot with preregistered analysis and immutable retrieval history."""
+# CLASSIFY: L1
+"""V-151U hardening: one-send RAC pilot, strict result contracts and atomic immutable evidence."""
 import os, sys, json, hashlib, datetime, re
 from pathlib import Path
 from scipy.stats import chisquare
@@ -7,10 +8,11 @@ from quafu import QuantumCircuit, simulate, User
 
 MODE=os.environ.get('MODE','SIM').upper()
 ROOT=Path.cwd()
-PREREG=json.loads((ROOT/'ci/QUAFU-RAC-PREFLIGHT-LGT-01.json').read_text())
 sys.path.insert(0,str(ROOT))
+from ci.quafu_rac_io import load_json, write_json_atomic
 from ci.quafu_rac_analysis import analyze_pilot_counts
 from ci.quafu_rac_immutable import make_snapshot, append_snapshot
+PREREG=load_json(ROOT/'ci/QUAFU-RAC-PREFLIGHT-LGT-01.json')
 RECEIPT=Path(os.environ.get('RECEIPT_PATH','receipts/quafu-rac-receipt.json'))
 SPENT_PATH=ROOT/'ci/QUAFU-RAC-FIRE-SPENT-LGT-01.json'
 HISTORY_PATH=ROOT/'ci/QUAFU-RAC-RETRIEVAL-HISTORY-LGT-01.json'
@@ -23,8 +25,7 @@ receipt={'schema':'lgt.quafu.rac.receipt.v1','experiment_id':PREREG['experiment_
          'S_real_pilot':None,'task_id':None,'ok':False}
 
 def save():
-    RECEIPT.parent.mkdir(parents=True,exist_ok=True)
-    RECEIPT.write_text(json.dumps(receipt,ensure_ascii=False,indent=2,sort_keys=True)+'\n')
+    write_json_atomic(RECEIPT,receipt)
 
 def clean_error(exc):
     s=str(exc)
@@ -104,18 +105,68 @@ def backend_snapshot(user):
                      'status':field(['status','state']),'task_in_queue':field(['task_in_queue','queue','pending_tasks'])})
     return rows
 
+KNOWN_STATUSES={'In Queue','Running','Pending','Completed','Failed','Canceled'}
+NEGATIVE_TERMINAL={'Failed','Canceled'}
+MISSING=object()
+
 def completed_result(res):
     status=getattr(res,'task_status',None)
+    logical=getattr(res,'logicalq_res',MISSING)
+    raw=getattr(res,'counts',MISSING)
+    measures=getattr(res,'measures',MISSING)
+    if logical is not MISSING and logical is not None:
+        selected=logical; source='logicalq_res'
+    elif raw is not MISSING and raw is not None:
+        selected=raw; source='counts_fallback'
+    else:
+        selected={}; source='empty_default'
     out={'task_id':getattr(res,'taskid',None),'task_status':status,
-         'task_name':getattr(res,'taskname',None),
-         'status_known':status in {'In Queue','Running','Completed','Failed','Canceled'}}
-    counts=getattr(res,'logicalq_res',None) or getattr(res,'counts',None) or {}
-    out['counts']=counts
+         'task_name':getattr(res,'taskname',None),'status_known':status in KNOWN_STATUSES,
+         'counts':selected,'counts_source':source,
+         'logicalq_counts':None if logical is MISSING else logical,
+         'raw_counts':None if raw is MISSING else raw,
+         'measures':None if measures is MISSING else measures,
+         'counts_contract':{'logicalq_res_present':logical is not MISSING,
+                            'counts_present':raw is not MISSING,
+                            'selection':'never use truthiness to discard a present empty logical projection'}}
+    return out
+
+def validate_result_contract(out):
+    sources={k:out.get(k) for k in ['logicalq_counts','raw_counts']}
+    for name,counts in sources.items():
+        if counts is None: continue
+        if not isinstance(counts,dict): raise ValueError(f'{name} must be a mapping')
+        for value in counts.values():
+            if type(value) is not int or value<0:
+                raise ValueError(f'{name} values must be nonnegative integer JSON numbers')
+    logical=sources['logicalq_counts']; raw=sources['raw_counts']
+    if logical is not None and raw is not None:
+        if sum(logical.values())!=sum(raw.values()):
+            raise RuntimeError('raw/logical counts total mismatch; evidence preserved and scoring forbidden')
+        measures=out.get('measures')
+        if measures is not None:
+            if not isinstance(measures,dict): raise ValueError('measures must be a mapping')
+            cbits=list(measures.values())
+            indexed={bit:i for i,bit in enumerate(sorted(cbits))}
+            squeezed=[indexed[bit] for bit in cbits]
+            projected={}
+            for key,value in raw.items():
+                if not isinstance(key,str): raise ValueError('raw counts keys must be strings')
+                try: newkey=''.join(key[i] for i in squeezed)
+                except IndexError as exc: raise ValueError('raw counts key shorter than measure map') from exc
+                if newkey in projected:
+                    raise RuntimeError('logical projection collision; refusing lossy counts selection')
+                projected[newkey]=value
+            if projected!=logical:
+                raise RuntimeError('raw/logical counts projection mismatch; evidence preserved and scoring forbidden')
     return out
 
 def score_completed_result(out):
     if not out.get('status_known'):
         raise RuntimeError('unknown task status; evidence preserved and scoring forbidden')
+    validate_result_contract(out)
+    if out.get('task_status') in NEGATIVE_TERMINAL:
+        raise RuntimeError('negative terminal task status; evidence preserved and workflow success forbidden')
     if out.get('task_status')=='Completed':
         counts=out['counts']
         if not counts:
@@ -134,15 +185,17 @@ def score_completed_result(out):
     return out
 
 def record_retrieval(out):
-    history=json.loads(HISTORY_PATH.read_text())
+    validate_result_contract(out)
+    history=load_json(HISTORY_PATH)
     run_id=os.environ.get('GITHUB_RUN_ID','')
-    if not run_id.isdigit():
-        raise RuntimeError('numeric GITHUB_RUN_ID required for immutable history')
+    run_attempt=os.environ.get('GITHUB_RUN_ATTEMPT','1')
+    if not run_id.isdigit() or not run_attempt.isdigit() or int(run_attempt)<=0:
+        raise RuntimeError('numeric GITHUB_RUN_ID and positive GITHUB_RUN_ATTEMPT required for immutable history')
     snap=make_snapshot(run_id,out['task_id'],out['task_status'],out['counts'],str(RECEIPT),
                        'UNSEALED_CURRENT_RECEIPT',
-                       datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'))
+                       datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),run_attempt)
     history=append_snapshot(history,snap)
-    HISTORY_PATH.write_text(json.dumps(history,ensure_ascii=False,indent=2,sort_keys=True)+'\n')
+    write_json_atomic(HISTORY_PATH,history)
     out['counts_sha256']=snap['counts_sha256']
     out['immutable_audit']=history['audit']
     receipt['immutable_audit']=history['audit']
@@ -153,19 +206,29 @@ def record_retrieval(out):
 try:
     if MODE not in ['SIM','FIRE','RETRIEVE']: raise ValueError('invalid MODE')
     if MODE=='FIRE' and SPENT_PATH.exists(): raise RuntimeError('FIRE spend marker exists; second send forbidden before authentication')
-    if not KEY: raise RuntimeError('QUAFU_KEY missing')
-    user=User(KEY)
     if MODE=='RETRIEVE':
         tid=os.environ.get('TASK_ID','').strip()
         if not tid: raise ValueError('TASK_ID required')
+        receipt['task_id']=tid
+        receipt['task_id_role']='requested_existing_task'
+        receipt['retrieval_request']={'task_id':tid,'method':'Task.retrieve','new_quantum_jobs':0}
+    if not KEY: raise RuntimeError('QUAFU_KEY missing')
+    user=User(KEY)
+    if MODE=='RETRIEVE':
         from quafu import Task
         task=Task(user)
-        res=task.retrieve(int(tid) if tid.isdigit() else tid)
+        try:
+            res=task.retrieve(int(tid) if tid.isdigit() else tid)
+        except Exception as exc:
+            receipt['retrieval_boundary']={'task_id':tid,'stage':'Task.retrieve/ExecResult',
+                'raw_counts_available':False,'snapshot_created':False,'error':clean_error(exc)}
+            raise
         receipt['retrieval']=completed_result(res); receipt['task_id']=receipt['retrieval']['task_id']
         record_retrieval(receipt['retrieval'])
         score_completed_result(receipt['retrieval'])
         receipt['new_quantum_jobs_confirmed']=0
-        receipt['ok']=receipt['retrieval']['task_status'] not in ['Failed','Canceled']
+        receipt['ok']=True
+        receipt['ok_semantics']='retrieval operation succeeded; task completion is represented only by retrieval.task_status'
     else:
         receipt['local_simulation_gate']=local_gate()
         rows=backend_snapshot(user); receipt['backend_snapshot']=rows
@@ -185,7 +248,9 @@ try:
             receipt['send_attempts']=1
             res=task.send(pilot,name=R['task_name'],group=R['group'],wait=False)  # exactly once; no retry
             receipt['new_quantum_jobs_confirmed']=1
-            receipt['submission']=score_completed_result(completed_result(res)); receipt['task_id']=receipt['submission']['task_id']
+            receipt['submission']=completed_result(res)
+            receipt['task_id']=receipt['submission']['task_id']
+            score_completed_result(receipt['submission'])
             receipt['ok']=receipt['task_id'] is not None
         else:
             receipt['fire_executed']=False; receipt['ok']=eligible

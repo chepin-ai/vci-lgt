@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# CLASSIFY: L1
 """Cross-retrieval canonical-counts immutability audit; no platform calls."""
 import hashlib, json
 
@@ -27,12 +28,16 @@ def counts_sha256(counts):
     canonical=canonical_counts(counts)
     return hashlib.sha256(json.dumps(canonical,sort_keys=True).encode()).hexdigest()
 
-def make_snapshot(run_id,task_id,task_status,counts,receipt_path,receipt_sha256,retrieved_utc):
+def make_snapshot(run_id,task_id,task_status,counts,receipt_path,receipt_sha256,retrieved_utc,run_attempt=1):
     if not task_id or not task_status:
         raise ValueError("task id and status required")
+    run_id=int(run_id); run_attempt=int(run_attempt)
+    if run_id<=0 or run_attempt<=0:
+        raise ValueError("positive run id and run attempt required")
     canonical=canonical_counts(counts)
     return {
-        "run_id":int(run_id),
+        "run_id":run_id,
+        "run_attempt":run_attempt,
         "task_id":str(task_id),
         "task_status":str(task_status),
         "counts":canonical,
@@ -49,9 +54,17 @@ def audit_history(history):
     if not isinstance(snapshots,list):
         raise ValueError("snapshots must be a list")
     task_id=history.get("task_id")
+    identities=set()
     for snap in snapshots:
         if snap.get("task_id")!=task_id:
             raise ValueError("cross-task history contamination")
+        run_id=snap.get("run_id"); run_attempt=snap.get("run_attempt",1)
+        if type(run_id) is not int or run_id<=0 or type(run_attempt) is not int or run_attempt<=0:
+            raise ValueError("snapshot requires positive integer run id and run attempt")
+        identity=(run_id,run_attempt)
+        if identity in identities:
+            raise ValueError("duplicate run identity in immutable history")
+        identities.add(identity)
         expected=counts_sha256(snap.get("counts",{}))
         if snap.get("counts_sha256")!=expected:
             raise ValueError("snapshot counts hash mismatch")
@@ -93,10 +106,11 @@ def append_snapshot(history,snapshot):
     if history.get("schema")!=SCHEMA or snapshot.get("task_id")!=history.get("task_id"):
         raise ValueError("history or task mismatch")
     snapshots=history.setdefault("snapshots",[])
-    duplicate=[s for s in snapshots if s.get("run_id")==snapshot.get("run_id")]
+    identity=(snapshot.get("run_id"),snapshot.get("run_attempt",1))
+    duplicate=[s for s in snapshots if (s.get("run_id"),s.get("run_attempt",1))==identity]
     if duplicate:
         if duplicate[0]!=snapshot:
-            raise ValueError("same run id with different snapshot")
+            raise ValueError("same run id and attempt with different snapshot")
     else:
         snapshots.append(snapshot)
     history["audit"]=audit_history(history)
