@@ -12,9 +12,11 @@
     "red": "8f7bdf6a27fe80df228d3bba82db9f183f38ae024acc6eff4f079bd8d135a9e6",
     "red05": "461185f5e7f54db75c7d7b87dd8d72dc45846781ba82bb20b204261712c80820",
     "red06": "b58a62b4291f6e14f733205245b2df259a208a4370806a85024ca4973a589039",
+    "remote_rebuild": "df896d1bf56d5f17a196ee63b3780092df27bcce3303118fe28869e52138c828",
     "selfcert": "b8780de44a87219805aabed3460e0d1f07395e346b8f0be30f30029872aa17a1",
     "workflow_rehearsal": "2ca46a37fa46eb3e582f62484260697cd05a041d5b66ea9b8cdc86aac82ccd1e"
   },
+  "execution_files_byte_equal": true,
   "github_hosted_workflow_tested": false,
   "independent_blackbox_groups": 24,
   "independent_statistical_cases": 1031,
@@ -30,11 +32,24 @@
   "real_platform_calls": 0,
   "real_quantum_jobs": 0,
   "remote_cleanroom": {
-    "status": "NOT_YET_TESTED_AT_SOURCE_STAGE"
+    "generated_evidence_byte_equal": 12,
+    "private_source_ref": "f90c9208695da48012dea7411b255d55eb464922",
+    "public_source_ref": "32351778b8d4c33a56761df8fc6e3c99509ddf18",
+    "script_returncodes": {
+      "actionlint": 0,
+      "independent": 0,
+      "red": 0,
+      "red05": 0,
+      "red06": 0,
+      "report": 0,
+      "selfcert": 0,
+      "workflow_rehearsal": 0
+    },
+    "status": "PASS"
   },
   "schema": "lgt.quafu.rac.v151u-r2-public-l1.v1",
   "selfcert_groups": 27,
-  "source_ref": null,
+  "source_ref": "32351778b8d4c33a56761df8fc6e3c99509ddf18",
   "ts": "2026-11-15T14:40:59Z",
   "v152_created": false,
   "workflow_dispatch_by_V151U_R2": 0,
