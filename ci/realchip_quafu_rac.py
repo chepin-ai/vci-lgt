@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # CLASSIFY: L1
-"""V-151U hardening: one-send RAC pilot, strict result contracts and atomic immutable evidence."""
+"""V-151U-R2: durable one-send fencing, strict task identity and immutable evidence."""
 import os, sys, json, hashlib, datetime, re
 from pathlib import Path
 from scipy.stats import chisquare
@@ -23,6 +23,8 @@ receipt={'schema':'lgt.quafu.rac.receipt.v1','experiment_id':PREREG['experiment_
          'started_utc':NOW,'sdk':PREREG['sdk'],'prereg_sha256':hashlib.sha256(json.dumps(PREREG,ensure_ascii=False,sort_keys=True).encode()).hexdigest(),
          'new_quantum_jobs_confirmed':0,'send_attempts':0,'new_quantum_jobs_uncertain':False,
          'S_real_pilot':None,'task_id':None,'ok':False}
+send_call_entered=False
+fence_created=False
 
 def save():
     write_json_atomic(RECEIPT,receipt)
@@ -32,6 +34,40 @@ def clean_error(exc):
     if KEY: s=s.replace(KEY,'[REDACTED]')
     s=re.sub(r'(?i)(api_token["\']?\s*[:=]\s*["\']?)[^,"\'\s}]+',r'\1[REDACTED]',s)
     return {'type':type(exc).__name__,'message':s[:1200]}
+
+def assert_no_prior_fire():
+    if SPENT_PATH.exists():
+        raise RuntimeError('FIRE spend fence exists; second send forbidden before authentication')
+    receipt_dir=ROOT/'receipts'
+    if not receipt_dir.exists(): return
+    for path in sorted(receipt_dir.glob('*.json')):
+        try: old=load_json(path)
+        except Exception as exc:
+            raise RuntimeError('unreadable prior receipt; FIRE forbidden fail-closed') from exc
+        if old.get('experiment_id')!=PREREG['experiment_id']: continue
+        attempts=old.get('send_attempts',0)
+        confirmed=old.get('new_quantum_jobs_confirmed',0)
+        uncertain=old.get('new_quantum_jobs_uncertain',False)
+        if type(attempts) is not int or attempts<0 or type(confirmed) is not int or confirmed<0:
+            raise RuntimeError('invalid prior FIRE counters; second send forbidden')
+        if type(uncertain) is not bool:
+            raise RuntimeError('invalid prior FIRE uncertain flag; second send forbidden')
+        if attempts>0 or confirmed>0 or uncertain:
+            raise RuntimeError('prior FIRE receipt evidence exists; second send forbidden before authentication')
+
+def write_fire_fence(status,error=None,send_attempts=None):
+    attempts=receipt['send_attempts'] if send_attempts is None else send_attempts
+    payload={'schema':'lgt.quafu.rac.fire-spent.v1','experiment_id':PREREG['experiment_id'],
+             'status':status,'no_retry':True,'updated_utc':datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
+             'run_id':os.environ.get('GITHUB_RUN_ID',''),'run_attempt':os.environ.get('GITHUB_RUN_ATTEMPT','1'),
+             'backend':PREREG['backend_policy']['selected'],'task_name':R['task_name'],'shots':R['shots'],
+             'qasm_sha256':receipt.get('pilot',{}).get('qasm_sha256'),'task_id':receipt.get('task_id'),
+             'send_attempts':attempts,'send_call_entered':send_call_entered,
+             'new_quantum_jobs_confirmed':receipt['new_quantum_jobs_confirmed'],
+             'new_quantum_jobs_uncertain':receipt['new_quantum_jobs_uncertain']}
+    if error is not None: payload['error']=error
+    write_json_atomic(SPENT_PATH,payload)
+    receipt['spend_fence']={'path':'ci/QUAFU-RAC-FIRE-SPENT-LGT-01.json','status':status,'no_retry':True}
 
 def fresh_rac(x1,x2,basis):
     q=QuantumCircuit(2)
@@ -205,7 +241,7 @@ def record_retrieval(out):
 
 try:
     if MODE not in ['SIM','FIRE','RETRIEVE']: raise ValueError('invalid MODE')
-    if MODE=='FIRE' and SPENT_PATH.exists(): raise RuntimeError('FIRE spend marker exists; second send forbidden before authentication')
+    if MODE=='FIRE': assert_no_prior_fire()
     if MODE=='RETRIEVE':
         tid=os.environ.get('TASK_ID','').strip()
         if not tid: raise ValueError('TASK_ID required')
@@ -223,7 +259,11 @@ try:
             receipt['retrieval_boundary']={'task_id':tid,'stage':'Task.retrieve/ExecResult',
                 'raw_counts_available':False,'snapshot_created':False,'error':clean_error(exc)}
             raise
-        receipt['retrieval']=completed_result(res); receipt['task_id']=receipt['retrieval']['task_id']
+        receipt['retrieval']=completed_result(res)
+        returned_tid=receipt['retrieval']['task_id']
+        if returned_tid is None or str(returned_tid)!=tid:
+            raise RuntimeError('retrieved task identity mismatch; requested identity preserved and history append forbidden')
+        receipt['task_id']=tid
         record_retrieval(receipt['retrieval'])
         score_completed_result(receipt['retrieval'])
         receipt['new_quantum_jobs_confirmed']=0
@@ -245,19 +285,29 @@ try:
                               'openqasm':pilot.openqasm,'qasm_sha256':hashlib.sha256(pilot.openqasm.encode()).hexdigest()}
             from quafu import Task
             task=Task(user); task.config(backend=PREREG['backend_policy']['selected'],shots=R['shots'],compile=R['compile'],priority=R['priority'])
+            write_fire_fence('SEND_ATTEMPT_FENCED',send_attempts=1)
+            fence_created=True
             receipt['send_attempts']=1
+            send_call_entered=True
             res=task.send(pilot,name=R['task_name'],group=R['group'],wait=False)  # exactly once; no retry
             receipt['new_quantum_jobs_confirmed']=1
             receipt['submission']=completed_result(res)
             receipt['task_id']=receipt['submission']['task_id']
+            if receipt['task_id'] is None or not str(receipt['task_id']).strip():
+                raise RuntimeError('FIRE returned no task identity; confirmed job preserved and producer success forbidden')
+            write_fire_fence('CONFIRMED_NO_RETRY')
             score_completed_result(receipt['submission'])
-            receipt['ok']=receipt['task_id'] is not None
+            receipt['ok']=True
         else:
             receipt['fire_executed']=False; receipt['ok']=eligible
 except Exception as exc:
     receipt['error']=clean_error(exc)
-    if MODE=='FIRE' and receipt['send_attempts']==1 and receipt['new_quantum_jobs_confirmed']==0:
+    if MODE=='FIRE' and send_call_entered and receipt['send_attempts']==1 and receipt['new_quantum_jobs_confirmed']==0:
         receipt['new_quantum_jobs_uncertain']=True; receipt['submission_outcome']='UNCERTAIN_NO_RETRY'
+    if fence_created:
+        fence_status='CONFIRMED_NO_RETRY' if receipt['new_quantum_jobs_confirmed'] else ('UNCERTAIN_NO_RETRY' if send_call_entered else 'SEND_ATTEMPT_FENCED')
+        try: write_fire_fence(fence_status,error=receipt['error'])
+        except Exception as fence_exc: receipt['spend_fence_update_error']=clean_error(fence_exc)
     receipt['ok']=False
     save(); print(json.dumps({'ok':False,'mode':MODE,'error_type':type(exc).__name__,'send_attempts':receipt['send_attempts']},ensure_ascii=False))
     sys.exit(1)

@@ -1,0 +1,42 @@
+{
+  "S_real_pilot": null,
+  "beat": "V-151U-R2",
+  "chain_233_modified": false,
+  "classification": "CLASSIFY: L1",
+  "classify": "L1",
+  "confirmed_defects_closed_offline": 6,
+  "current_real_task_status": "NOT_RETRIEVED_IN_V151U_R2",
+  "evidence_sha256": {
+    "actionlint": "895cf5b512c29063160f7d261719b1700132b7c8f4d51db79c472804bb9dc4cd",
+    "independent": "823afae8a17dca3686903391be14115381206ccc37a0dacac453add66afa9c6c",
+    "red": "8f7bdf6a27fe80df228d3bba82db9f183f38ae024acc6eff4f079bd8d135a9e6",
+    "red05": "461185f5e7f54db75c7d7b87dd8d72dc45846781ba82bb20b204261712c80820",
+    "red06": "b58a62b4291f6e14f733205245b2df259a208a4370806a85024ca4973a589039",
+    "selfcert": "b8780de44a87219805aabed3460e0d1f07395e346b8f0be30f30029872aa17a1",
+    "workflow_rehearsal": "2ca46a37fa46eb3e582f62484260697cd05a041d5b66ea9b8cdc86aac82ccd1e"
+  },
+  "github_hosted_workflow_tested": false,
+  "independent_blackbox_groups": 24,
+  "independent_statistical_cases": 1031,
+  "last_real_observation": {
+    "counts": {},
+    "finished_utc": "2026-11-10T05:17:32Z",
+    "status": "In Queue",
+    "task_id": "91C842B01A238734"
+  },
+  "new_FIRE": 0,
+  "new_RETRIEVE": 0,
+  "offline_verdict": "PASS",
+  "real_platform_calls": 0,
+  "real_quantum_jobs": 0,
+  "remote_cleanroom": {
+    "status": "NOT_YET_TESTED_AT_SOURCE_STAGE"
+  },
+  "schema": "lgt.quafu.rac.v151u-r2-public-l1.v1",
+  "selfcert_groups": 27,
+  "source_ref": null,
+  "ts": "2026-11-15T14:40:59Z",
+  "v152_created": false,
+  "workflow_dispatch_by_V151U_R2": 0,
+  "workflow_rehearsal_cases": 8
+}

@@ -53,6 +53,9 @@ jobs:
           git config user.name lgt-bot
           git config user.email lgt-bot@users.noreply.github.com
           git add "$RECEIPT_PATH" ci/QUAFU-RAC-RETRIEVAL-HISTORY-LGT-01.json
+          if [ -f ci/QUAFU-RAC-FIRE-SPENT-LGT-01.json ]; then
+            git add ci/QUAFU-RAC-FIRE-SPENT-LGT-01.json
+          fi
           if ! git diff --cached --quiet; then
             git commit -m "QUAFU-RAC receipt ${{ github.run_id }} attempt ${{ github.run_attempt }}"
           fi
@@ -71,4 +74,5 @@ jobs:
           path: |
             receipts/quafu-rac-${{ github.run_id }}-attempt-${{ github.run_attempt }}.json
             ci/QUAFU-RAC-RETRIEVAL-HISTORY-LGT-01.json
+            ci/QUAFU-RAC-FIRE-SPENT-LGT-01.json
           if-no-files-found: error
