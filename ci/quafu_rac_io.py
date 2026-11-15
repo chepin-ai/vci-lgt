@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # CLASSIFY: L1
-"""Strict JSON loading and atomic evidence writes; no platform or credential operations."""
+"""Strict JSON and crash-oriented evidence writes; no platform or credential operations."""
 import json
 import os
 from pathlib import Path
@@ -31,12 +31,19 @@ def write_json_atomic(path, payload):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_name(path.name + f".tmp-{os.getpid()}")
+    directory_fd = None
     try:
         # write_text is intentionally used here so fault injection can exercise partial-write cleanup.
         tmp.write_text(json_text(payload), encoding="utf-8")
         with tmp.open("rb") as handle:
             os.fsync(handle.fileno())
         os.replace(tmp, path)
+        # Persist the rename itself on filesystems that honor directory fsync.
+        # This is a syscall-level durability boundary, not a power-loss proof.
+        directory_fd = os.open(path.parent, os.O_RDONLY | getattr(os, "O_DIRECTORY", 0))
+        os.fsync(directory_fd)
     finally:
+        if directory_fd is not None:
+            os.close(directory_fd)
         if tmp.exists():
             tmp.unlink()

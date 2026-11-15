@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # CLASSIFY: L1
-"""V-151U-R2: durable one-send fencing, strict task identity and immutable evidence."""
-import os, sys, json, hashlib, datetime, re
+"""V-151U-R3: cross-process one-send admission, durable fencing and immutable evidence."""
+import os, sys, json, hashlib, datetime, re, fcntl
 from pathlib import Path
 from scipy.stats import chisquare
 from quafu import QuantumCircuit, simulate, User
@@ -15,6 +15,7 @@ from ci.quafu_rac_immutable import make_snapshot, append_snapshot
 PREREG=load_json(ROOT/'ci/QUAFU-RAC-PREFLIGHT-LGT-01.json')
 RECEIPT=Path(os.environ.get('RECEIPT_PATH','receipts/quafu-rac-receipt.json'))
 SPENT_PATH=ROOT/'ci/QUAFU-RAC-FIRE-SPENT-LGT-01.json'
+ADMISSION_LOCK_PATH=ROOT/'ci/QUAFU-RAC-FIRE-ADMISSION.lock'
 HISTORY_PATH=ROOT/'ci/QUAFU-RAC-RETRIEVAL-HISTORY-LGT-01.json'
 NOW=datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 KEY=os.environ.get('QUAFU_KEY','')
@@ -54,6 +55,21 @@ def assert_no_prior_fire():
             raise RuntimeError('invalid prior FIRE uncertain flag; second send forbidden')
         if attempts>0 or confirmed>0 or uncertain:
             raise RuntimeError('prior FIRE receipt evidence exists; second send forbidden before authentication')
+
+def acquire_fire_admission():
+    """Serialize the recheck and first fence write; the lock file is not spend evidence."""
+    ADMISSION_LOCK_PATH.parent.mkdir(parents=True,exist_ok=True)
+    handle=ADMISSION_LOCK_PATH.open('a+b')
+    try:
+        fcntl.flock(handle.fileno(),fcntl.LOCK_EX)
+    except Exception:
+        handle.close()
+        raise
+    return handle
+
+def release_fire_admission(handle):
+    try: fcntl.flock(handle.fileno(),fcntl.LOCK_UN)
+    finally: handle.close()
 
 def write_fire_fence(status,error=None,send_attempts=None):
     attempts=receipt['send_attempts'] if send_attempts is None else send_attempts
@@ -285,11 +301,18 @@ try:
                               'openqasm':pilot.openqasm,'qasm_sha256':hashlib.sha256(pilot.openqasm.encode()).hexdigest()}
             from quafu import Task
             task=Task(user); task.config(backend=PREREG['backend_policy']['selected'],shots=R['shots'],compile=R['compile'],priority=R['priority'])
-            write_fire_fence('SEND_ATTEMPT_FENCED',send_attempts=1)
-            fence_created=True
-            receipt['send_attempts']=1
+            admission=acquire_fire_admission()
+            try:
+                # The early check is only an optimization. The authoritative recheck
+                # and first spend fence are serialized across local processes.
+                assert_no_prior_fire()
+                write_fire_fence('SEND_ATTEMPT_FENCED',send_attempts=1)
+                fence_created=True
+                receipt['send_attempts']=1
+            finally:
+                release_fire_admission(admission)
             send_call_entered=True
-            res=task.send(pilot,name=R['task_name'],group=R['group'],wait=False)  # exactly once; no retry
+            res=task.send(pilot,name=R['task_name'],group=R['group'],wait=False)  # one admitted producer call; no retry; server-side exactly-once is not claimed
             receipt['new_quantum_jobs_confirmed']=1
             receipt['submission']=completed_result(res)
             receipt['task_id']=receipt['submission']['task_id']

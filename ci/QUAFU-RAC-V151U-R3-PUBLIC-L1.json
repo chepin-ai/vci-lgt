@@ -1,0 +1,47 @@
+{
+  "S_real_pilot": null,
+  "beat": "V-151U-R3",
+  "chain_233_modified": false,
+  "classification": "CLASSIFY: L1",
+  "classify": "L1",
+  "confirmed_defects_closed_offline": 2,
+  "current_real_task_status": "NOT_RETRIEVED_IN_V151U_R3",
+  "evidence_sha256": {
+    "actionlint": "38a38716f7ce190c94c40c8abc3d82c61bffc2310f7e1f80fb302a19b4ea554a",
+    "independent": "c0a9d3e6a11d8041882f650074e90b0ee0c1c9ee9285c9fc28c77a0f1c594239",
+    "model": "d8507023a6de9fd2fce3c5e19e1427e6d583ca5ed2a37d905ca16c2d943d179b",
+    "red": "45c50d70cb0ec790d3f2301baedb6503570921804068c9264e85129fd2c16644",
+    "selfcert": "c72ee18310fde292deb16305a3037f2b31c52af5fa88a57d6a6b8bbf6699aaf6",
+    "workflow_rehearsal": "0d36dd8d1418bf5a4f0ee65b9baa1a0a78dc77236c2f1f9915889d169e745a7a",
+    "z3": "d40fa79d279e6963c2de7839836d10e2ac559210145553284d3ca96642d0265d"
+  },
+  "github_hosted_workflow_tested": false,
+  "independent_blackbox_groups": 29,
+  "independent_statistical_cases": 1031,
+  "last_real_observation": {
+    "counts": {},
+    "finished_utc": "2026-11-10T05:17:32Z",
+    "status": "In Queue",
+    "task_id": "91C842B01A238734"
+  },
+  "model_states": 31351,
+  "new_FIRE": 0,
+  "new_RETRIEVE": 0,
+  "offline_verdict": "PASS",
+  "power_loss_tested": false,
+  "producer_at_most_one_send_scope": "shared work root + flock + atomic persistent fence; offline model and synthetic SDK only",
+  "real_platform_calls": 0,
+  "real_quantum_jobs": 0,
+  "remote_cleanroom": {
+    "status": "NOT_YET_TESTED_AT_SOURCE_STAGE"
+  },
+  "schema": "lgt.quafu.rac.v151u-r3-public-l1.v1",
+  "selfcert_groups": 31,
+  "source_ref": null,
+  "ts": "2026-11-15T17:41:02Z",
+  "v152_created": false,
+  "workflow_dispatch_by_V151U_R3": 0,
+  "workflow_rehearsal_cases": 8,
+  "z3_non_vacuity": "SAT",
+  "z3_safety": "UNSAT"
+}
