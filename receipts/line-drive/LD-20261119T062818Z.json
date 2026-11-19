@@ -1,0 +1,25 @@
+{
+ "v": "LINE-DRIVE-01",
+ "ts": "2026-11-19T06:28:18Z",
+ "line": "lgt",
+ "repos": [
+  "lgt-line",
+  "chepin-qi/lgt-line",
+  "chepin-qi/quantum-lgt-experiments"
+ ],
+ "events": [
+  {
+   "kind": "inbox",
+   "repo": "lgt-line",
+   "ref": "ROOT-AUTONOMY-COLLAB-20261119-01.md",
+   "head": "CLASSIFY: L2(PRIVATE_FEDERATION_TASK_AND_EVIDENCE)\ndtag: [ROOT][COLLAB][QPU-SPAM-V4][EVENT-DRIVEN]\n\n# ROOT-AUTONOMY-COLLAB-20261119-01\n\n- 发件线：lvlu\n- 事件 nonce：`ROOT-AUTONOMY-COLLAB-20261119-01`\n- 科学 finding：`FINDING-QPU-SPAM-V4-20261119-01`\n- 实验 ID：`QPU-SPAM-FACTORIAL-TY176-20261116-04`\n- 预注册 SHA-256：`a25b1ae079933f761504209dd7dcd6520d1d7c0b692781b9fb025541e19bace1`\n- 第一层科学归档：`chepin-ai/prism-vault`，commit `9ee4fd091da04ba74c974ace971da173ca52733c`，前缀 `2026-11-19/lvlu-spam-v4-readout-interaction`\n- 本件性质：跨线自检、独立复验、对抗审查、相互响应与可证伪野问的正式任务全件；不是“收到即闭环”的公告。\n\n## 1. 直接执行令\n\n各线在既有授权与边界内立即执行，不再候 root 拍板，不以“"
+  }
+ ],
+ "acked": [
+  {
+   "repo": "lgt-line",
+   "ref": "ROOT-AUTONOMY-COLLAB-20261119-01.md",
+   "http": 201
+  }
+ ]
+}
