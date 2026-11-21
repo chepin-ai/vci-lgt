@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # CLASSIFY: L1
-"""V-151U-R4: recursive spend evidence, identity-gated confirmation and durable admission."""
+"""V-151U-R5: local durable admission plus create-only remote pre-spend fencing."""
 import os, sys, json, hashlib, datetime, re, fcntl
 from pathlib import Path
 from scipy.stats import chisquare
@@ -12,6 +12,7 @@ sys.path.insert(0,str(ROOT))
 from ci.quafu_rac_io import load_json, write_json_atomic
 from ci.quafu_rac_analysis import analyze_pilot_counts
 from ci.quafu_rac_immutable import make_snapshot, append_snapshot
+from ci import quafu_rac_remote_fence as remote_fence_module
 PREREG=load_json(ROOT/'ci/QUAFU-RAC-PREFLIGHT-LGT-01.json')
 RECEIPT=Path(os.environ.get('RECEIPT_PATH','receipts/quafu-rac-receipt.json'))
 SPENT_PATH=ROOT/'ci/QUAFU-RAC-FIRE-SPENT-LGT-01.json'
@@ -306,6 +307,20 @@ try:
                 # The early check is only an optimization. The authoritative recheck
                 # and first spend fence are serialized across local processes.
                 assert_no_prior_fire()
+                # Remote claim is acquired while the local admission lock is held.
+                # Any existing claim, including our own, blocks: after a crash it
+                # cannot be distinguished from a producer that already entered send.
+                remote_fence=remote_fence_module.acquire_from_environment(
+                    experiment={'experiment_id':PREREG['experiment_id']},
+                    claimant={'run_id':os.environ.get('GITHUB_RUN_ID',''),
+                              'run_attempt':os.environ.get('GITHUB_RUN_ATTEMPT','1'),
+                              'prereg_sha256':receipt['prereg_sha256'],
+                              'qasm_sha256':receipt['pilot']['qasm_sha256'],
+                              'backend':PREREG['backend_policy']['selected'],
+                              'task_name':R['task_name'],'group':R['group']})
+                receipt['remote_fence']=remote_fence
+                if not remote_fence['send_permitted']:
+                    raise RuntimeError('remote persistent fence denied admission; send forbidden and no retry authorized')
                 write_fire_fence('SEND_ATTEMPT_FENCED',send_attempts=1)
                 fence_created=True
                 receipt['send_attempts']=1

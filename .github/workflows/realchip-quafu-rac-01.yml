@@ -38,6 +38,9 @@ jobs:
           TASK_ID: ${{ inputs.task_id }}
           CONFIRMATION: ${{ inputs.confirmation }}
           QUAFU_KEY: ${{ secrets.QUAFU_KEY }}
+          LGT_COORDINATOR_TOKEN: ${{ secrets.LGT_COORDINATOR_TOKEN }}
+          LGT_REMOTE_FENCE_BACKEND: coordinator
+          LGT_COORDINATOR_URL: ${{ vars.LGT_COORDINATOR_URL }}
           RECEIPT_PATH: receipts/quafu-rac-${{ github.run_id }}-attempt-${{ github.run_attempt }}.json
         run: python ci/realchip_quafu_rac.py
       - name: Commit mandatory evidence; false or missing receipts fail after bounded push
