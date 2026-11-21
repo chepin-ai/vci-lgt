@@ -1,0 +1,51 @@
+{
+  "S_real_pilot": null,
+  "beat": "V-151U-R4",
+  "chain_233_modified": false,
+  "classification": "CLASSIFY: L1",
+  "classify": "L1",
+  "confirmed_defects_closed_offline": 4,
+  "current_real_task_status": "NOT_RETRIEVED_IN_V151U_R4",
+  "evidence_sha256": {
+    "actionlint": "2f19f13fe7900071f00adc2ca29c8c827b2c4c36f58069154845f0179b9514c2",
+    "collaboration_delivery": "cb3af9a045d06e66406cbb2336fc9196d77e470f1bbd06f586d5540b1547183e",
+    "independent": "6cb200f1b1cdcd6f80d8cf74399fb608e36c7167361cacf98a9938ed0d8d41fc",
+    "model": "b112b230d8f6192f37f3f068163478298f716423ed6927709dda50f1e16c793d",
+    "red": "6940349589b69d8b693024bc072c2847b56a11f6b84862e3b57b963d6fb41f2f",
+    "selfcert": "c9fa590f4d0ccd6c59dac2e99e886df326a4fc3b24bdc8cf1f9456d88ad7dc12",
+    "workflow_rehearsal": "efd8d823bc6eb49d339dc090b9a98f03809bf75e1c7b99cad72ec5928258d368",
+    "z3": "98d3671e601dbd495396fe9848262ccd00a15f444521147ac196cde0fa4272ca"
+  },
+  "github_hosted_workflow_tested": false,
+  "identity_gate_states": 4,
+  "independent_blackbox_groups": 33,
+  "independent_statistical_cases": 1031,
+  "last_real_observation": {
+    "counts": {},
+    "finished_utc": "2026-11-10T05:17:32Z",
+    "status": "In Queue",
+    "task_id": "91C842B01A238734"
+  },
+  "model_states": 31351,
+  "new_FIRE": 0,
+  "new_RETRIEVE": 0,
+  "offline_verdict": "PASS",
+  "power_loss_tested": false,
+  "producer_scope": "shared work root + flock + atomic persistent evidence; recursive receipt scan and identity-gated confirmation; offline only",
+  "real_platform_calls": 0,
+  "real_quantum_jobs": 0,
+  "receipt_scan_states": 8,
+  "remote_cleanroom": {
+    "status": "NOT_YET_TESTED_AT_SOURCE_STAGE"
+  },
+  "schema": "lgt.quafu.rac.v151u-r4-public-l1.v1",
+  "selfcert_groups": 35,
+  "source_ref": null,
+  "ts": "2026-11-21T03:25:11Z",
+  "v152_created": false,
+  "workflow_dispatch_by_V151U_R4": 0,
+  "workflow_rehearsal_cases": 10,
+  "z3_empty_identity_confirmation": "UNSAT",
+  "z3_non_vacuity": "SAT",
+  "z3_safety": "UNSAT"
+}

@@ -60,15 +60,15 @@ def ensure_receipt(path):
                 raise ValueError("invalid spend fence boolean flags")
             if fence.get("no_retry") is not True:
                 raise ValueError("spend fence no_retry must be true")
-            if status == "CONFIRMED_NO_RETRY" and confirmed != 1:
-                raise ValueError("confirmed fence lacks confirmed job evidence")
+            task_id = fence.get("task_id")
+            if task_id is not None and not isinstance(task_id, str):
+                raise ValueError("invalid spend fence task identity")
+            if status == "CONFIRMED_NO_RETRY" and (confirmed != 1 or not (isinstance(task_id, str) and task_id.strip())):
+                raise ValueError("confirmed fence lacks confirmed job evidence or nonempty task identity")
             if status != "CONFIRMED_NO_RETRY" and confirmed != 0:
                 raise ValueError("unconfirmed fence has confirmed job evidence")
             if status == "UNCERTAIN_NO_RETRY" and uncertain is not True:
                 raise ValueError("uncertain fence lacks uncertain flag")
-            task_id = fence.get("task_id")
-            if task_id is not None and not isinstance(task_id, str):
-                raise ValueError("invalid spend fence task identity")
             spend.update({
                 "send_attempts": attempts,
                 "new_quantum_jobs_confirmed": confirmed,

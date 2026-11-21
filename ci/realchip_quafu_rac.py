@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # CLASSIFY: L1
-"""V-151U-R3: cross-process one-send admission, durable fencing and immutable evidence."""
+"""V-151U-R4: recursive spend evidence, identity-gated confirmation and durable admission."""
 import os, sys, json, hashlib, datetime, re, fcntl
 from pathlib import Path
 from scipy.stats import chisquare
@@ -41,7 +41,7 @@ def assert_no_prior_fire():
         raise RuntimeError('FIRE spend fence exists; second send forbidden before authentication')
     receipt_dir=ROOT/'receipts'
     if not receipt_dir.exists(): return
-    for path in sorted(receipt_dir.glob('*.json')):
+    for path in sorted(receipt_dir.rglob('*.json')):
         try: old=load_json(path)
         except Exception as exc:
             raise RuntimeError('unreadable prior receipt; FIRE forbidden fail-closed') from exc
@@ -313,11 +313,12 @@ try:
                 release_fire_admission(admission)
             send_call_entered=True
             res=task.send(pilot,name=R['task_name'],group=R['group'],wait=False)  # one admitted producer call; no retry; server-side exactly-once is not claimed
-            receipt['new_quantum_jobs_confirmed']=1
             receipt['submission']=completed_result(res)
-            receipt['task_id']=receipt['submission']['task_id']
-            if receipt['task_id'] is None or not str(receipt['task_id']).strip():
-                raise RuntimeError('FIRE returned no task identity; confirmed job preserved and producer success forbidden')
+            returned_task_id=receipt['submission']['task_id']
+            if returned_task_id is None or not str(returned_task_id).strip():
+                raise RuntimeError('FIRE returned no task identity; send outcome remains uncertain and confirmation is forbidden')
+            receipt['new_quantum_jobs_confirmed']=1
+            receipt['task_id']=returned_task_id
             write_fire_fence('CONFIRMED_NO_RETRY')
             score_completed_result(receipt['submission'])
             receipt['ok']=True

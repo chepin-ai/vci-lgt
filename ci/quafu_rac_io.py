@@ -3,6 +3,7 @@
 """Strict JSON and crash-oriented evidence writes; no platform or credential operations."""
 import json
 import os
+import tempfile
 from pathlib import Path
 
 
@@ -15,12 +16,20 @@ def _unique_object(pairs):
     return out
 
 
+def _reject_nonfinite(constant):
+    raise ValueError(f"non-finite JSON number forbidden: {constant}")
+
+
 def load_json(path):
-    return json.loads(Path(path).read_text(encoding="utf-8"), object_pairs_hook=_unique_object)
+    return json.loads(
+        Path(path).read_text(encoding="utf-8"),
+        object_pairs_hook=_unique_object,
+        parse_constant=_reject_nonfinite,
+    )
 
 
 def json_text(payload):
-    return json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+    return json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True, allow_nan=False) + "\n"
 
 
 def json_bytes(payload):
@@ -30,7 +39,10 @@ def json_bytes(payload):
 def write_json_atomic(path, payload):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    tmp = path.with_name(path.name + f".tmp-{os.getpid()}")
+    # O_EXCL-backed mkstemp avoids PID-only collisions between same-process writers.
+    fd, tmp_name = tempfile.mkstemp(prefix=path.name + ".tmp-", dir=path.parent)
+    os.close(fd)
+    tmp = Path(tmp_name)
     directory_fd = None
     try:
         # write_text is intentionally used here so fault injection can exercise partial-write cleanup.
