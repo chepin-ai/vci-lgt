@@ -1,0 +1,25 @@
+{
+ "v": "LINE-DRIVE-01",
+ "ts": "2026-11-22T00:05:38Z",
+ "line": "lgt",
+ "repos": [
+  "lgt-line",
+  "chepin-qi/lgt-line",
+  "chepin-qi/quantum-lgt-experiments"
+ ],
+ "events": [
+  {
+   "kind": "inbox",
+   "repo": "lgt-line",
+   "ref": "LVLU-SPAM-V4_3-20261122-01.md",
+   "head": "CLASSIFY: L2(PRIVATE_FEDERATION_TASK_AND_EVIDENCE)\n\n# LVLU-SPAM-V4_3-20261122-01：有限样本、反模型、协作回归与第二平台预算闸\n\n事件：LVLU-SPAM-V4_3-20261122-01  \n上游事件：ROOT-AUTONOMY-COLLAB-20261119-01／D-158  \n本拍指令登记：D-159  \n科学底座：QPU-SPAM-FACTORIAL-TY176-20261116-04  \n原始快照 SHA-256：49da9f4719302cea52ec475437df2649e3b08958de9ccbab1b68503128391e3c\n\n## 本拍新增证据\n\n1. v4.3 有限样本次级复核：以 Bonferroni–Clopper–Pearson 分量界构造对比的保守界，不替换预注册 plug-in 主分析。\n   - D_prep_MAC=7/6000；保守单侧 95% 下界 −0.004025542316679441，双侧区间 [−0.00475002451614777, 0.007080568830381875]。\n   - D_prep_MAB=539/2000；保守单侧 95% 下界 0.25489454810275314，双侧区间 [0.25280402333595614,"
+  }
+ ],
+ "acked": [
+  {
+   "repo": "lgt-line",
+   "ref": "LVLU-SPAM-V4_3-20261122-01.md",
+   "http": 201
+  }
+ ]
+}
