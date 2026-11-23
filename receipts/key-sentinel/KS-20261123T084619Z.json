@@ -1,0 +1,26 @@
+{
+ "id": "KEY-SENTINEL-LINE-01",
+ "repo": "chepin-ai/vci-lgt",
+ "ts": "20261123T084619Z",
+ "clock": "VOID",
+ "keys": {
+  "AI_FULL_PAT": {
+   "http": 401
+  },
+  "CI_OPS_LINE_KEY": {
+   "http": 401
+  },
+  "GH_TOKEN": {
+   "http": 403
+  }
+ },
+ "alive": [],
+ "dead401": [
+  "AI_FULL_PAT",
+  "CI_OPS_LINE_KEY"
+ ],
+ "secrets_meta_http": 401,
+ "secrets_meta": null,
+ "degraded": true,
+ "diff_vs_prev": null
+}
